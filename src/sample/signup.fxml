@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<GridPane alignment="center" hgap="10" vgap="10" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.SignupController">
+   <children>
+      <Pane prefHeight="600.0" prefWidth="400.0" style="-fx-background-color: CORNFLOWERBLUE;">
+         <children>
+            <Button defaultButton="true" layoutX="139.0" layoutY="440.0" mnemonicParsing="false" onAction="#signing" prefHeight="13.0" prefWidth="124.0" style="-fx-background-color: #3109aa;" text="Sign Up" textAlignment="CENTER" textFill="#fffdfd">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Button>
+            <Text layoutX="50.0" layoutY="395.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Repassword">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <Button layoutX="170.0" layoutY="550.0" mnemonicParsing="false" onAction="#back" prefWidth="61.0" style="-fx-background-color: DEEPPINK;" text="Back" textAlignment="CENTER">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+            <PasswordField fx:id="repassword" layoutX="152.0" layoutY="373.0" prefHeight="25.0" prefWidth="212.0">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </PasswordField>
+            <TextField fx:id="email" layoutX="152.0" layoutY="223.0" prefHeight="25.0" prefWidth="212.0">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </TextField>
+            <Text layoutX="50.0" layoutY="245.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <TextField fx:id="fullName" layoutX="152.0" layoutY="173.0" prefHeight="25.0" prefWidth="212.0">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </TextField>
+            <Text layoutX="50.0" layoutY="195.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Full Name">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <Text layoutX="50.0" layoutY="345.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <PasswordField fx:id="password" layoutX="152.0" layoutY="323.0" prefHeight="30.0" prefWidth="182.0">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </PasswordField>
+            <Button layoutX="153.0" layoutY="510.0" mnemonicParsing="false" onAction="#clear" prefHeight="30.0" prefWidth="96.0" style="-fx-background-color: AQUAMARINE;" text="Clear" textAlignment="CENTER">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Button>
+            <Button layoutX="334.0" layoutY="323.0" mnemonicParsing="false" onAction="#visible" prefHeight="29.0" prefWidth="28.0">
+               -fx-background-image: ('/images/eye.png');
+               -fx-background-size: 20px;
+               -fx-background-repeat: no-repeat;
+               -fx-background-position: 90%;
+            </Button>
+            <TextField fx:id="accountNo" layoutX="152.0" layoutY="123.0" prefHeight="25.0" prefWidth="212.0">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </TextField>
+            <Text layoutX="50.0" layoutY="145.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Account No.">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <TextField fx:id="phoneNo" layoutX="152.0" layoutY="273.0" prefHeight="25.0" prefWidth="212.0">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </TextField>
+            <Text layoutX="50.0" layoutY="295.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Phone No.">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <TextField fx:id="visiblePassword" layoutX="152.0" layoutY="323.0" prefHeight="25.0" prefWidth="182.0" visible="false">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="visibleRepassword" layoutX="152.0" layoutY="373.0" prefHeight="25.0" prefWidth="212.0" visible="false">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </TextField>
+            <Text fill="#3109aa" layoutX="34.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ROYAL BANK OF CANADA" textAlignment="CENTER" underline="true" wrappingWidth="331.01953125">
+               <font>
+                  <Font name="Arial" size="24.0" />
+               </font>
+            </Text>
+         </children>
+      </Pane>
+   </children>
+   <columnConstraints>
+      <ColumnConstraints />
+   </columnConstraints>
+   <rowConstraints>
+      <RowConstraints />
+   </rowConstraints>
+</GridPane>

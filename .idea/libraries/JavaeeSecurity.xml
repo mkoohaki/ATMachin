@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="JavaeeSecurity" type="JavaeeSecurity">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/cdi-api-1.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/javax-inject.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

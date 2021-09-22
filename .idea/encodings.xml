@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$USER_HOME$/Documents/WebGoat/webgoat-container/src/main/java" charset="UTF-8" />
+    <file url="file://$USER_HOME$/Documents/WebGoat/webgoat-lessons/auth-bypass/src/main/java" charset="UTF-8" />
+    <file url="file://$USER_HOME$/Documents/WebGoat/webgoat-lessons/bypass-restrictions/src/main/java" charset="UTF-8" />
+    <file url="file://$USER_HOME$/Documents/WebGoat/webgoat-lessons/challenge/src/main/java" charset="UTF-8" />
+    <file url="file://$USER_HOME$/Documents/WebGoat/webgoat-lessons/chrome-dev-tools/src/main/java" charset="UTF-8" />
+    <file url="file://$USER_HOME$/Documents/WebGoat/webgoat-lessons/cia/src/main/java" charset="UTF-8" />
+    <file url="file://$USER_HOME$/Documents/WebGoat/webgoat-lessons/client-side-filtering/src/main/java" charset="UTF-8" />
+    <file url="file://$USER_HOME$/Documents/WebGoat/webgoat-lessons/cross-site-scripting/src/main/java" charset="UTF-8" />
+    <file url="file://$USER_HOME$/Documents/WebGoat/webgoat-lessons/crypto/src/main/java" charset="UTF-8" />
+    <file url="file://$USER_HOME$/Documents/WebGoat/webgoat-lessons/csrf/src/main/java" charset="UTF-8" />
+    <file url="file://$USER_HOME$/Documents/WebGoat/webgoat-lessons/html-tampering/src/main/java" charset="UTF-8" />
+    <file url="file://$USER_HOME$/Documents/WebGoat/webgoat-lessons/http-basics/src/main/java" charset="UTF-8" />
+    <file url="file://$USER_HOME$/Documents/WebGoat/webgoat-lessons/http-proxies/src/main/java" charset="UTF-8" />
+    <file url="file://$USER_HOME$/Documents/WebGoat/webgoat-lessons/idor/src/main/java" charset="UTF-8" />
+    <file url="file://$USER_HOME$/Documents/WebGoat/webgoat-lessons/insecure-deserialization/src/main/java" charset="UTF-8" />
+    <file url="file://$USER_HOME$/Documents/WebGoat/webgoat-lessons/insecure-login/src/main/java" charset="UTF-8" />
+    <file url="file://$USER_HOME$/Documents/WebGoat/webgoat-lessons/jwt/src/main/java" charset="UTF-8" />
+    <file url="file://$USER_HOME$/Documents/WebGoat/webgoat-lessons/missing-function-ac/src/main/java" charset="UTF-8" />
+    <file url="file://$USER_HOME$/Documents/WebGoat/webgoat-lessons/password-reset/src/main/java" charset="UTF-8" />
+    <file url="file://$USER_HOME$/Documents/WebGoat/webgoat-lessons/secure-passwords/src/main/java" charset="UTF-8" />
+    <file url="file://$USER_HOME$/Documents/WebGoat/webgoat-lessons/sql-injection/src/main/java" charset="UTF-8" />
+    <file url="file://$USER_HOME$/Documents/WebGoat/webgoat-lessons/ssrf/src/main/java" charset="UTF-8" />
+    <file url="file://$USER_HOME$/Documents/WebGoat/webgoat-lessons/vulnerable-components/src/main/java" charset="UTF-8" />
+    <file url="file://$USER_HOME$/Documents/WebGoat/webgoat-lessons/webgoat-introduction/src/main/java" charset="UTF-8" />
+    <file url="file://$USER_HOME$/Documents/WebGoat/webgoat-lessons/webgoat-lesson-template/src/main/java" charset="UTF-8" />
+    <file url="file://$USER_HOME$/Documents/WebGoat/webgoat-lessons/webwolf-introduction/src/main/java" charset="UTF-8" />
+    <file url="file://$USER_HOME$/Documents/WebGoat/webgoat-lessons/xxe/src/main/java" charset="UTF-8" />
+    <file url="file://$USER_HOME$/Documents/WebGoat/webgoat-server/src/main/java" charset="UTF-8" />
+    <file url="file://$USER_HOME$/Documents/WebGoat/webwolf/src/main/java" charset="UTF-8" />
+    <file url="PROJECT" charset="UTF-8" />
+  </component>
+</project>

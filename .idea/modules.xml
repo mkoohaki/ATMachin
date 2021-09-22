@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/ATM.iml" filepath="$PROJECT_DIR$/ATM.iml" />
+      <module fileurl="file://$USER_HOME$/Documents/WebGoat/webgoat-lessons/auth-bypass/auth-bypass.iml" filepath="$USER_HOME$/Documents/WebGoat/webgoat-lessons/auth-bypass/auth-bypass.iml" />
+      <module fileurl="file://$USER_HOME$/Documents/WebGoat/webgoat-lessons/xxe/bind.iml" filepath="$USER_HOME$/Documents/WebGoat/webgoat-lessons/xxe/bind.iml" />
+      <module fileurl="file://$USER_HOME$/Documents/WebGoat/webgoat-lessons/bypass-restrictions/bypass-restrictions.iml" filepath="$USER_HOME$/Documents/WebGoat/webgoat-lessons/bypass-restrictions/bypass-restrictions.iml" />
+      <module fileurl="file://$USER_HOME$/Documents/WebGoat/webgoat-lessons/challenge/challenge.iml" filepath="$USER_HOME$/Documents/WebGoat/webgoat-lessons/challenge/challenge.iml" />
+      <module fileurl="file://$USER_HOME$/Documents/WebGoat/webgoat-lessons/chrome-dev-tools/chrome-dev-tools.iml" filepath="$USER_HOME$/Documents/WebGoat/webgoat-lessons/chrome-dev-tools/chrome-dev-tools.iml" />
+      <module fileurl="file://$USER_HOME$/Documents/WebGoat/webgoat-lessons/cia/cia.iml" filepath="$USER_HOME$/Documents/WebGoat/webgoat-lessons/cia/cia.iml" />
+      <module fileurl="file://$USER_HOME$/Documents/WebGoat/webgoat-lessons/client-side-filtering/client-side-filtering.iml" filepath="$USER_HOME$/Documents/WebGoat/webgoat-lessons/client-side-filtering/client-side-filtering.iml" />
+      <module fileurl="file://$USER_HOME$/Documents/WebGoat/webgoat-lessons/cross-site-scripting/cross-site-scripting.iml" filepath="$USER_HOME$/Documents/WebGoat/webgoat-lessons/cross-site-scripting/cross-site-scripting.iml" />
+      <module fileurl="file://$USER_HOME$/Documents/WebGoat/webgoat-lessons/crypto/crypto.iml" filepath="$USER_HOME$/Documents/WebGoat/webgoat-lessons/crypto/crypto.iml" />
+      <module fileurl="file://$USER_HOME$/Documents/WebGoat/webgoat-lessons/csrf/csrf.iml" filepath="$USER_HOME$/Documents/WebGoat/webgoat-lessons/csrf/csrf.iml" />
+      <module fileurl="file://$USER_HOME$/Documents/WebGoat/webgoat-lessons/html-tampering/html-tampering.iml" filepath="$USER_HOME$/Documents/WebGoat/webgoat-lessons/html-tampering/html-tampering.iml" />
+      <module fileurl="file://$USER_HOME$/Documents/WebGoat/webgoat-lessons/http-basics/http-basics.iml" filepath="$USER_HOME$/Documents/WebGoat/webgoat-lessons/http-basics/http-basics.iml" />
+      <module fileurl="file://$USER_HOME$/Documents/WebGoat/webgoat-lessons/http-proxies/http-proxies.iml" filepath="$USER_HOME$/Documents/WebGoat/webgoat-lessons/http-proxies/http-proxies.iml" />
+      <module fileurl="file://$USER_HOME$/Documents/WebGoat/webgoat-lessons/idor/idor.iml" filepath="$USER_HOME$/Documents/WebGoat/webgoat-lessons/idor/idor.iml" />
+      <module fileurl="file://$USER_HOME$/Documents/WebGoat/webgoat-lessons/insecure-deserialization/insecure-deserialization.iml" filepath="$USER_HOME$/Documents/WebGoat/webgoat-lessons/insecure-deserialization/insecure-deserialization.iml" />
+      <module fileurl="file://$USER_HOME$/Documents/WebGoat/webgoat-lessons/insecure-login/insecure-login.iml" filepath="$USER_HOME$/Documents/WebGoat/webgoat-lessons/insecure-login/insecure-login.iml" />
+      <module fileurl="file://$USER_HOME$/Documents/WebGoat/webgoat-lessons/jwt/jwt.iml" filepath="$USER_HOME$/Documents/WebGoat/webgoat-lessons/jwt/jwt.iml" />
+      <module fileurl="file://$USER_HOME$/Documents/WebGoat/webgoat-lessons/missing-function-ac/missing-function-ac.iml" filepath="$USER_HOME$/Documents/WebGoat/webgoat-lessons/missing-function-ac/missing-function-ac.iml" />
+      <module fileurl="file://$USER_HOME$/Documents/WebGoat/webgoat-lessons/password-reset/password-reset.iml" filepath="$USER_HOME$/Documents/WebGoat/webgoat-lessons/password-reset/password-reset.iml" />
+      <module fileurl="file://$USER_HOME$/Documents/WebGoat/webgoat-lessons/secure-passwords/secure-passwords.iml" filepath="$USER_HOME$/Documents/WebGoat/webgoat-lessons/secure-passwords/secure-passwords.iml" />
+      <module fileurl="file://$USER_HOME$/Documents/WebGoat/webgoat-lessons/sql-injection/sql-injection.iml" filepath="$USER_HOME$/Documents/WebGoat/webgoat-lessons/sql-injection/sql-injection.iml" />
+      <module fileurl="file://$USER_HOME$/Documents/WebGoat/webgoat-lessons/ssrf/ssrf.iml" filepath="$USER_HOME$/Documents/WebGoat/webgoat-lessons/ssrf/ssrf.iml" />
+      <module fileurl="file://$USER_HOME$/Documents/WebGoat/webgoat-lessons/vulnerable-components/vulnerable-components.iml" filepath="$USER_HOME$/Documents/WebGoat/webgoat-lessons/vulnerable-components/vulnerable-components.iml" />
+      <module fileurl="file://$USER_HOME$/Documents/WebGoat/webgoat-parent.iml" filepath="$USER_HOME$/Documents/WebGoat/webgoat-parent.iml" />
+    </modules>
+  </component>
+</project>

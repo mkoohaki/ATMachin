@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <wildcardResourcePatterns>
+      <entry name="!?*.java" />
+      <entry name="!?*.form" />
+      <entry name="!?*.class" />
+      <entry name="!?*.groovy" />
+      <entry name="!?*.scala" />
+      <entry name="!?*.flex" />
+      <entry name="!?*.kt" />
+      <entry name="!?*.clj" />
+    </wildcardResourcePatterns>
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="bypass-restrictions" />
+        <module name="password-reset" />
+        <module name="ssrf" />
+        <module name="jwt" />
+        <module name="chrome-dev-tools" />
+        <module name="http-proxies" />
+        <module name="auth-bypass" />
+        <module name="secure-passwords" />
+        <module name="vulnerable-components" />
+        <module name="csrf" />
+        <module name="sql-injection" />
+        <module name="idor" />
+        <module name="crypto" />
+        <module name="client-side-filtering" />
+        <module name="bind" />
+        <module name="insecure-deserialization" />
+        <module name="challenge" />
+        <module name="cia" />
+        <module name="cross-site-scripting" />
+        <module name="html-tampering" />
+        <module name="insecure-login" />
+        <module name="missing-function-ac" />
+        <module name="http-basics" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="auth-bypass" target="1.5" />
+      <module name="bind" target="1.5" />
+      <module name="bypass-restrictions" target="1.5" />
+      <module name="challenge" target="1.5" />
+      <module name="chrome-dev-tools" target="1.5" />
+      <module name="cia" target="1.5" />
+      <module name="client-side-filtering" target="1.5" />
+      <module name="cross-site-scripting" target="1.5" />
+      <module name="crypto" target="1.5" />
+      <module name="csrf" target="1.5" />
+      <module name="html-tampering" target="1.5" />
+      <module name="http-basics" target="1.5" />
+      <module name="http-proxies" target="1.5" />
+      <module name="idor" target="1.5" />
+      <module name="insecure-deserialization" target="1.5" />
+      <module name="insecure-login" target="1.5" />
+      <module name="jwt" target="1.5" />
+      <module name="missing-function-ac" target="1.5" />
+      <module name="password-reset" target="1.5" />
+      <module name="secure-passwords" target="1.5" />
+      <module name="sql-injection" target="1.5" />
+      <module name="ssrf" target="1.5" />
+      <module name="vulnerable-components" target="1.5" />
+      <module name="webgoat-container" target="11" />
+      <module name="webgoat-integration-tests" target="11" />
+      <module name="webgoat-introduction" target="11" />
+      <module name="webgoat-lesson-template" target="11" />
+      <module name="webgoat-lessons-parent" target="11" />
+      <module name="webgoat-parent" target="11" />
+      <module name="webgoat-server" target="11" />
+      <module name="webwolf" target="11" />
+      <module name="webwolf-introduction" target="11" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="auth-bypass" options="-parameters" />
+      <module name="bind" options="-parameters" />
+      <module name="bypass-restrictions" options="-parameters" />
+      <module name="challenge" options="-parameters" />
+      <module name="chrome-dev-tools" options="-parameters" />
+      <module name="cia" options="-parameters" />
+      <module name="client-side-filtering" options="-parameters" />
+      <module name="cross-site-scripting" options="-parameters" />
+      <module name="crypto" options="-parameters" />
+      <module name="csrf" options="-parameters" />
+      <module name="html-tampering" options="-parameters" />
+      <module name="http-basics" options="-parameters" />
+      <module name="http-proxies" options="-parameters" />
+      <module name="idor" options="-parameters" />
+      <module name="insecure-deserialization" options="-parameters" />
+      <module name="insecure-login" options="-parameters" />
+      <module name="jwt" options="-parameters" />
+      <module name="missing-function-ac" options="-parameters" />
+      <module name="password-reset" options="-parameters" />
+      <module name="secure-passwords" options="-parameters" />
+      <module name="sql-injection" options="-parameters" />
+      <module name="ssrf" options="-parameters" />
+      <module name="vulnerable-components" options="-parameters" />
+      <module name="webgoat-container" options="-parameters" />
+      <module name="webgoat-integration-tests" options="-parameters" />
+      <module name="webgoat-introduction" options="-parameters" />
+      <module name="webgoat-lesson-template" options="-parameters" />
+      <module name="webgoat-server" options="-parameters" />
+      <module name="webwolf" options="-parameters" />
+      <module name="webwolf-introduction" options="-parameters" />
+    </option>
+  </component>
+</project>
