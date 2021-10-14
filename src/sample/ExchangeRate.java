@@ -20,7 +20,7 @@ public class ExchangeRate {
             jsonObject += line;
         buff.close();
 
-        String jp = "Not found!", eur = "Not found!", cad = "Not found!", gbp = "Not found!";
+        String jp, eur, cad, gbp;
 
         int jpIndex = jsonObject.indexOf("\"JPY\""),
             eurIndex = jsonObject.indexOf("\"EUR\""),
@@ -56,6 +56,7 @@ public class ExchangeRate {
                 rate = gbp;
                 break;
         }
+        System.out.println("rate: "+ rate);
         return rate;
     }
 }

@@ -5,8 +5,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
-import javafx.scene.control.Alert;
 import javafx.scene.text.Text;
+
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
@@ -20,12 +20,11 @@ public class WithdrawDepositController implements Initializable {
     javafx.scene.control.TextField amount;
 
     @FXML
-    javafx.scene.control.Button onClick;
+    javafx.scene.control.Button onClick, backClick;
 
     @FXML
     Text message;
 
-    private Window window = new Window();
     private final String[] transactionType = {"Select", "Deposit", "Withdraw"};
     private final String[] accounts = {"Select", "Checking", "Saving"};
 
@@ -36,8 +35,8 @@ public class WithdrawDepositController implements Initializable {
         accountNum = accountNumber;
         message.setText("");
 
-        transaction.setValue("Select");
-        account.setValue("Select");
+        transaction.setValue(transactionType[0]);
+        account.setValue(accounts[0]);
     }
 
     @Override
@@ -85,12 +84,14 @@ public class WithdrawDepositController implements Initializable {
             done = true;
         }
 
-        db.updateRow(accountNum, String.valueOf(checkBalance), String.valueOf(saveBalance), lineBal);
         if (done) {
-            Alert alert;
-            alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setContentText("Transaction done successfully");
-            alert.showAndWait();
+            db.updateRow(accountNum, String.valueOf(checkBalance), String.valueOf(saveBalance), lineBal);
+            if(trans.equals("Withdraw")) {
+                db.insertActivityRow(accountNum, "Withdraw", acc, "", String.valueOf(amnt));
+            } else {
+                db.insertActivityRow(accountNum, "Deposit", "", acc, String.valueOf(amnt));
+            }
+            Partials.alert("Transaction done successfully", "Notification");
         } else {
             message.setText("Amount is larger than balance!");
         }
@@ -106,7 +107,7 @@ public class WithdrawDepositController implements Initializable {
             Parent root = loader.load();
             AccountController accountController = loader.getController();
             accountController.setInfo(accountNum);
-            onClick.getScene().setRoot(root);
+            backClick.getScene().setRoot(root);
         } catch (Exception e) {
             System.err.println("Cannot load file!");
         }

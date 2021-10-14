@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<GridPane alignment="center" hgap="10" stylesheets="/CSS/style.css" vgap="10" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.TransactionsController">
+   <children>
+      <Pane prefHeight="600.0" prefWidth="400.0" style="-fx-background-color: MIDNIGHTBLUE;">
+         <children>
+            <Text fill="WHITE" layoutX="34.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ROYAL BANK OF CANADA" textAlignment="CENTER" underline="true" wrappingWidth="331.01953125">
+               <font>
+                  <Font name="Arial" size="24.0" />
+               </font>
+            </Text>
+            <Button fx:id="onClick" layoutX="170.0" layoutY="550.0" mnemonicParsing="false" onAction="#back" prefWidth="61.0" style="-fx-background-color: DEEPPINK;" text="Back" textAlignment="CENTER" textFill="MIDNIGHTBLUE">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Button>
+            <TableView fx:id="table" layoutX="5.0" layoutY="143.0" prefHeight="360.0" prefWidth="390.0" scaleShape="false">
+              <columns>
+                <TableColumn fx:id="col_activity" prefWidth="150.0" styleClass="column" text="Activity" />
+                  <TableColumn fx:id="col_amount" prefWidth="75.0" styleClass="column" text="\$ Amount" />
+                  <TableColumn fx:id="col_date" prefWidth="165.0" styleClass="column" text="Date" />
+              </columns>
+            </TableView>
+            <Label fx:id="title" alignment="CENTER" contentDisplay="CENTER" layoutY="96.0" prefHeight="20.0" prefWidth="400.0" style="-fx-border-color: AQUAMARINE;" text="Chequing/Saving Transactions" textFill="#87d3ce">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <Text fill="WHITE" layoutX="93.0" layoutY="534.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Balance         $" wrappingWidth="120.1796875">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <Text fx:id="balance" fill="WHITE" layoutX="214.0" layoutY="534.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\$1000.00" wrappingWidth="165.1796875">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Text>
+         </children>
+      </Pane>
+   </children>
+   <columnConstraints>
+      <ColumnConstraints />
+   </columnConstraints>
+   <rowConstraints>
+      <RowConstraints />
+   </rowConstraints>
+</GridPane>

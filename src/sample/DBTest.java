@@ -1,9 +1,6 @@
 package sample;
 
 import java.sql.SQLException;
-import java.text.NumberFormat;
-import java.util.Arrays;
-import java.util.Locale;
 
 public class DBTest {
 
@@ -23,8 +20,7 @@ public class DBTest {
                     break;
                 try {
                     if (i>5) {
-                        Currency currency = new Currency();
-                        System.out.printf("\t%s : %s%n", columnName[i], currency.currency("Cad", columns[i]));
+                        System.out.printf("\t%s : %s%n", columnName[i],  columns[i]);
                     } else{
                         System.out.printf("\t%s : %s%n", columnName[i], columns[i]);
                     }

@@ -14,7 +14,7 @@
    <children>
       <Pane prefHeight="600.0" prefWidth="400.0" style="-fx-background-color: DEEPSKYBLUE;">
          <children>
-            <Button fx:id="onClick" defaultButton="true" layoutX="140.0" layoutY="355.0" mnemonicParsing="false" onAction="#transfer" prefHeight="13.0" prefWidth="124.0" style="-fx-background-color: #3109aa;" text="Transfer" textAlignment="CENTER" textFill="#fffcfc">
+            <Button fx:id="onClick" defaultButton="true" layoutX="140.0" layoutY="360.0" mnemonicParsing="false" onAction="#transfer" prefHeight="13.0" prefWidth="124.0" style="-fx-background-color: #3109aa;" text="Transfer" textAlignment="CENTER" textFill="#fffcfc">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>

@@ -69,12 +69,6 @@
                   <Font name="System Bold" size="14.0" />
                </font>
             </Button>
-            <Button layoutX="334.0" layoutY="323.0" mnemonicParsing="false" onAction="#visible" prefHeight="29.0" prefWidth="28.0">
-               -fx-background-image: ('/images/eye.png');
-               -fx-background-size: 20px;
-               -fx-background-repeat: no-repeat;
-               -fx-background-position: 90%;
-            </Button>
             <TextField fx:id="accountNo" layoutX="152.0" layoutY="123.0" prefHeight="25.0" prefWidth="212.0">
                <font>
                   <Font size="14.0" />
@@ -110,6 +104,7 @@
                   <Font name="Arial" size="24.0" />
                </font>
             </Text>
+            <Button fx:id="eye" layoutX="334.0" layoutY="323.0" mnemonicParsing="false" onAction="#visible" prefHeight="29.0" prefWidth="28.0" />
          </children>
       </Pane>
    </children>

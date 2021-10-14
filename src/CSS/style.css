@@ -1,0 +1,33 @@
+#table .column-header .label {
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-border-color: MIDNIGHTBLUE;
+    -fx-border-width: 0px;
+    -fx-background-color: MIDNIGHTBLUE;
+}
+
+.table-row-cell{
+    -fx-table-cell-border-color:MIDNIGHTBLUE;
+}
+
+.table-row-cell .table-cell{
+    -fx-border-width: 0px;
+    -fx-table-cell-border-color:MIDNIGHTBLUE;
+}
+
+.column{
+    -fx-background-color: MIDNIGHTBLUE;
+    -fx-text-fill: WHITE;
+    -fx-text-position: CENTER;
+    -fx-border-color: MIDNIGHTBLUE;
+    -fx-alignment: CENTER;
+}
+
+#table *.increment-button,
+       *.decrement-button,
+       *.increment-arrow,
+       *.decrement-arrow
+{
+    -fx-padding: 0;
+    -fx-shape: "";
+}

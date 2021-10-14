@@ -2,11 +2,12 @@ package sample;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import java.sql.SQLException;
-import javafx.scene.control.TextField;
 import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
+
 import javax.xml.bind.DatatypeConverter;
+import java.sql.SQLException;
 
 public class RetrievingController {
 
@@ -23,7 +24,6 @@ public class RetrievingController {
     javafx.scene.control.Button getInfo, submitInfo;
 
     private static final int ACCOUNT_DIGIT_NUMBER = 10;
-    private Window window = new Window();
     String accountNumber, emailAddress, pass, repass;
 
 
@@ -34,7 +34,7 @@ public class RetrievingController {
         emailAddress = email.getText();
 
         try {
-            if(SignupController.isValidNumber(accountNumber)) {
+            if(Partials.isValidNumber(accountNumber)) {
                 if(SignupController.isValidEmail(emailAddress)){
 
                     AccountDatabase db = new AccountDatabase();
@@ -91,8 +91,8 @@ public class RetrievingController {
     @FXML
     private void back(ActionEvent event) {
         try {
-            window.open("Login", "Royal Canadian Bank", 600, 400);
-            window.close(event);
+            Partials.windowOpen("Login", "Royal Canadian Bank", 600, 400);
+            Partials.windowClose(event);
         } catch (Exception e) {
             System.err.println("Cannot load file!");
         }
@@ -116,8 +116,8 @@ public class RetrievingController {
                 db.updatePassword(accountNumber, salt, hashedPass);
 
                 alert("Password is changed successfully", "notification");
-                window.open("login", "Royal Canadian Bank", 600, 400);
-                window.close(event);
+                Partials.windowOpen("login", "Royal Canadian Bank", 600, 400);
+                Partials.windowClose(event);
             } else {
                 alert("Password and repassword are not matched", "error");
             }

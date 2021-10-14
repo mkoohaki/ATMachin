@@ -43,29 +43,29 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="auth-bypass" target="1.5" />
-      <module name="bind" target="1.5" />
-      <module name="bypass-restrictions" target="1.5" />
-      <module name="challenge" target="1.5" />
-      <module name="chrome-dev-tools" target="1.5" />
-      <module name="cia" target="1.5" />
-      <module name="client-side-filtering" target="1.5" />
-      <module name="cross-site-scripting" target="1.5" />
-      <module name="crypto" target="1.5" />
-      <module name="csrf" target="1.5" />
-      <module name="html-tampering" target="1.5" />
-      <module name="http-basics" target="1.5" />
-      <module name="http-proxies" target="1.5" />
-      <module name="idor" target="1.5" />
-      <module name="insecure-deserialization" target="1.5" />
-      <module name="insecure-login" target="1.5" />
-      <module name="jwt" target="1.5" />
-      <module name="missing-function-ac" target="1.5" />
-      <module name="password-reset" target="1.5" />
-      <module name="secure-passwords" target="1.5" />
-      <module name="sql-injection" target="1.5" />
-      <module name="ssrf" target="1.5" />
-      <module name="vulnerable-components" target="1.5" />
+      <module name="auth-bypass" target="11" />
+      <module name="bind" target="11" />
+      <module name="bypass-restrictions" target="11" />
+      <module name="challenge" target="11" />
+      <module name="chrome-dev-tools" target="11" />
+      <module name="cia" target="11" />
+      <module name="client-side-filtering" target="11" />
+      <module name="cross-site-scripting" target="11" />
+      <module name="crypto" target="11" />
+      <module name="csrf" target="11" />
+      <module name="html-tampering" target="11" />
+      <module name="http-basics" target="11" />
+      <module name="http-proxies" target="11" />
+      <module name="idor" target="11" />
+      <module name="insecure-deserialization" target="11" />
+      <module name="insecure-login" target="11" />
+      <module name="jwt" target="11" />
+      <module name="missing-function-ac" target="11" />
+      <module name="password-reset" target="11" />
+      <module name="secure-passwords" target="11" />
+      <module name="sql-injection" target="11" />
+      <module name="ssrf" target="11" />
+      <module name="vulnerable-components" target="11" />
       <module name="webgoat-container" target="11" />
       <module name="webgoat-integration-tests" target="11" />
       <module name="webgoat-introduction" target="11" />

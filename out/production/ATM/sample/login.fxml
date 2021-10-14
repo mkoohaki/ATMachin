@@ -34,7 +34,7 @@
                   <Font size="18.0" />
                </font>
             </Text>
-            <Button layoutX="117.0" layoutY="470.0" mnemonicParsing="false" onAction="#signup" prefHeight="30.0" prefWidth="167.0" style="-fx-background-color: CORNFLOWERBLUE;" text="Sign Up" textAlignment="CENTER">
+            <Button fx:id="signupButton" layoutX="117.0" layoutY="470.0" mnemonicParsing="false" onAction="#signup" prefHeight="30.0" prefWidth="167.0" style="-fx-background-color: CORNFLOWERBLUE;" text="Sign Up" textAlignment="CENTER">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>

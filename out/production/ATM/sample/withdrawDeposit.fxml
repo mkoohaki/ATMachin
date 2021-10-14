@@ -34,7 +34,7 @@
                   <Font name="Arial" size="24.0" />
                </font>
             </Text>
-            <Button layoutX="170.0" layoutY="550.0" mnemonicParsing="false" onAction="#back" prefWidth="61.0" style="-fx-background-color: DEEPPINK;" text="Back" textAlignment="CENTER" textFill="CADETBLUE">
+            <Button fx:id="backClick" layoutX="170.0" layoutY="550.0" mnemonicParsing="false" onAction="#back" prefWidth="61.0" style="-fx-background-color: DEEPPINK;" text="Back" textAlignment="CENTER" textFill="CADETBLUE">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>

@@ -7,9 +7,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.text.Text;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
-import java.text.NumberFormat;
 import java.util.ResourceBundle;
 
 public class TransferController implements Initializable {
@@ -18,7 +18,7 @@ public class TransferController implements Initializable {
     private javafx.scene.control.ChoiceBox<String> accountFrom, accountTo;
 
     @FXML
-    javafx.scene.control.TextField amount;
+    javafx.scene.control.TextField accountNo, amount;
 
     @FXML
     javafx.scene.control.Button onClick;
@@ -26,8 +26,8 @@ public class TransferController implements Initializable {
     @FXML
     Text message;
 
-    private Window window = new Window();
-    private final String[] accounts = {"Select", "Checking", "Saving", "Line of credit"};
+    private final String[] accountF = {"Select", "Checking", "Saving", "Line of credit"};
+    private final String[] accountT = {"Select", "Checking", "Saving", "Line of credit"};
 
     String accountNum;
 
@@ -36,15 +36,15 @@ public class TransferController implements Initializable {
         accountNum = accountNumber;
         message.setText("");
 
-        accountFrom.setValue("Select");
-        accountTo.setValue("Select");
+        accountFrom.setValue(accountF[0]);
+        accountTo.setValue(accountT[0]);
     }
 
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
 
-        accountFrom.getItems().addAll(accounts);
-        accountTo.getItems().addAll(accounts);
+        accountFrom.getItems().addAll(accountF);
+        accountTo.getItems().addAll(accountT);
     }
 
     @FXML
@@ -63,53 +63,58 @@ public class TransferController implements Initializable {
         String accountF = accountFrom.getValue();
         String accountT = accountTo.getValue();
 
-        switch (accountF) {
-            case "Checking":
-                if (checkBalance >= amnt) {
-                    checkBalance -= amnt;
-                    switch (accountT) {
-                        case "Saving":
-                            saveBalance += amnt;
-                        case "Line of credit":
-                            lineBalance += amnt;
-                    }
-                    done = true;
+        String msg = null;
+
+        if (accountF.equals("Checking") && !accountT.equals("Checking")) {
+            if (checkBalance >= amnt) {
+                checkBalance -= amnt;
+                switch (accountT) {
+                    case "Saving":
+                        saveBalance += amnt;
+                    case "Line of credit":
+                        lineBalance += amnt;
                 }
-                break;
-            case "Saving":
-                if (saveBalance >= amnt) {
-                    saveBalance -= amnt;
-                    switch (accountT) {
-                        case "Checking":
-                            checkBalance += amnt;
-                        case "Line of credit":
-                            lineBalance += amnt;
-                    }
-                    done = true;
+                done = true;
+            } else {
+                msg = "Amount is larger than balance!";
+            }
+        } else if (accountF.equals("Saving") && !accountT.equals("Saving")) {
+            if (saveBalance >= amnt) {
+                saveBalance -= amnt;
+                switch (accountT) {
+                    case "Checking":
+                        checkBalance += amnt;
+                    case "Line of credit":
+                        lineBalance += amnt;
                 }
-                break;
-            case "Line of credit":
-                if (lineBalance >= amnt) {
-                    lineBalance -= amnt;
-                    switch (accountT) {
-                        case "Checking":
-                            checkBalance += amnt;
-                        case "Saving":
-                            saveBalance += amnt;
-                    }
-                    done = true;
+                done = true;
+            } else {
+                msg = "Amount is larger than balance!";
+            }
+        } else if (accountF.equals("Line of credit") && !accountT.equals("Line of credit")) {
+            if (lineBalance >= amnt) {
+                lineBalance -= amnt;
+                switch (accountT) {
+                    case "Checking":
+                        checkBalance += amnt;
+                    case "Saving":
+                        saveBalance += amnt;
                 }
-                break;
+                done = true;
+            } else {
+                msg = "Amount is larger than balance!";
+            }
+        } else {
+            msg = "Error- Select different accounts!";
         }
 
-        db.updateRow(accountNum, String.valueOf(checkBalance), String.valueOf(saveBalance), String.valueOf(lineBalance));
+
         if (done) {
-            javafx.scene.control.Alert alert;
-            alert = new javafx.scene.control.Alert(javafx.scene.control.Alert.AlertType.INFORMATION);
-            alert.setContentText("Transaction done successfully");
-            alert.showAndWait();
+            db.updateRow(accountNum, String.valueOf(checkBalance), String.valueOf(saveBalance), String.valueOf(lineBalance));
+            db.insertActivityRow(accountNum, "Transfer", accountF, accountT, String.valueOf(amnt));
+            Partials.alert("Transaction done successfully", "Notification");
         } else {
-            message.setText("Amount is larger than balance!");
+            message.setText(msg);
         }
         accountFrom.getSelectionModel().selectFirst();
         accountTo.getSelectionModel().selectFirst();
@@ -117,15 +122,11 @@ public class TransferController implements Initializable {
     }
 
     @FXML
-    private void back(ActionEvent event) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("account.fxml"));
-            Parent root = loader.load();
-            AccountController accountController = loader.getController();
-            accountController.setInfo(accountNum);
-            onClick.getScene().setRoot(root);
-        } catch (Exception e) {
-            System.err.println("Cannot load file!");
-        }
+    private void back(ActionEvent event) throws SQLException, IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("account.fxml"));
+        Parent root = loader.load();
+        AccountController accountController = loader.getController();
+        accountController.setInfo(accountNum);
+        onClick.getScene().setRoot(root);
     }
 }

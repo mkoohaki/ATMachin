@@ -2,22 +2,25 @@ package sample;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
+import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javax.xml.bind.DatatypeConverter;
-import java.io.ByteArrayOutputStream;
 import org.apache.commons.validator.routines.EmailValidator;
 
+import javax.xml.bind.DatatypeConverter;
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.net.URL;
 import java.security.MessageDigest;
 import java.security.SecureRandom;
+import java.sql.SQLException;
 import java.util.Locale;
+import java.util.ResourceBundle;
 
-public class SignupController {
+public class SignupController  implements Initializable {
 
-    private static final int PHONE_AND_ACCOUNT_DIGIT_NUMBER = 10,
-                             MINIMUM_DIGIT_NUMBER = 8,
+    private static final int MINIMUM_DIGIT_NUMBER = 8,
                              MAXIMUM_DIGIT_NUMBER = 16,
                              MINIMUM_NUMBERS = 4,
                              MINIMUM_LOWERCASE_NUMBER = 2,
@@ -36,13 +39,22 @@ public class SignupController {
     @FXML
     TextField visiblePassword, visibleRepassword;
 
-    private Window window = new Window();
+    @FXML
+    Button eye;
+
     String accountNumber, name, emailAddress, phoneNumber, pass, repass;
 
-    @FXML
-    private void signing(ActionEvent event) throws IOException {
+    void setInfo() throws SQLException, IOException {
 
-        try {
+        eye.setStyle("-fx-background-image: url('sample/images/eye.png'); " +
+                     "-fx-background-repeat: no-repeat; " +
+                     "-fx-background-size: 100% 100%;");
+    }
+
+    @FXML
+    private void signing(ActionEvent event) {
+
+    try {
             accountNumber = accountNo.getText();
             name = fullName.getText();
             emailAddress = email.getText();
@@ -57,10 +69,10 @@ public class SignupController {
                 repass = visibleRepassword.getText();
             }
 
-            if(isValidNumber(accountNumber)) {
+            if(Partials.isValidNumber(accountNumber)) {
                 if(!name.isEmpty()) {
                     if(isValidEmail(emailAddress)) {
-                        if(isValidNumber(phoneNumber)){
+                        if(Partials.isValidNumber(phoneNumber)){
                             if (isValidPassword(pass)) {
                                 if (pass.equals(repass)) {
 
@@ -77,29 +89,29 @@ public class SignupController {
 
                                     AccountDatabase db = new AccountDatabase();
                                     db.insertRow(accountNumber, salt, hashedPass, name, emailAddress, phoneNumber, "0", "0", "0");
-                                    alert("Information saved", "notification");
-                                    window.open("login", "Royal Canadian Bank", 600, 400);
-                                    window.close(event);
+                                    Partials.alert("Information saved", "notification");
+                                    Partials.windowOpen("login", "Royal Canadian Bank", 600, 400);
+                                    Partials.windowClose(event);
                                 } else {
-                                    alert("Password and repassword are not matched", "error");
+                                    Partials.alert("Password and repassword are not matched", "error");
                                 }
                             } else {
-                                alert("Password must be between 8-16 character, at least:\n2 uppercase, 2 lowercase, 4 digits, and 1 special sign", "error");
+                                Partials.alert("Password must be between 8-16 character, at least:\n2 uppercase, 2 lowercase, 4 digits, and 1 special sign", "error");
                             }
                         } else {
-                            alert("Phone number is not valid,\nIt is not mandatory", "error");
+                            Partials.alert("Phone number is not valid,\nIt is not mandatory", "error");
                         }
                     } else {
-                        alert("Valid email address is needed", "error");
+                        Partials.alert("Valid email address is needed", "error");
                     }
                 } else {
-                    alert("Full name is needed", "error");
+                    Partials.alert("Full name is needed", "error");
                 }
             } else {
-                alert("Account number must be a 10 digit number", "error");
+                Partials.alert("Account number must be a 10 digit number", "error");
             }
         } catch (Exception e) {
-            alert("Some information is wrong", "error");
+            Partials.alert("Some information is wrong", "error");
             System.err.println("Cannot load file! "+e);
         }
     }
@@ -123,11 +135,15 @@ public class SignupController {
     @FXML
     private void back(ActionEvent event) {
         try {
-            window.open("Login", "Royal Canadian Bank", 600, 400);
-            window.close(event);
+            Partials.windowOpen("Login", "Royal Canadian Bank", 600, 400);
+            Partials.windowClose(event);
         } catch (Exception e) {
             System.err.println("Cannot load file!");
         }
+    }
+
+    @Override
+    public void initialize(URL arg0, ResourceBundle arg1) {
     }
 
     @FXML
@@ -138,6 +154,10 @@ public class SignupController {
             String visiblePass = visiblePassword.getText();
             String visibleRepass = visibleRepassword.getText();
             if(password.isVisible()) {
+
+                eye.setStyle("-fx-background-image: url('sample/images/closedEye.png'); " +
+                        "-fx-background-repeat: no-repeat; " +
+                        "-fx-background-size: 100% 100%;");
                 password.setVisible(false);
                 repassword.setVisible(false);
                 visiblePassword.setText(pass);
@@ -145,6 +165,10 @@ public class SignupController {
                 visiblePassword.setVisible(true);
                 visibleRepassword.setVisible(true);
             } else {
+
+                eye.setStyle("-fx-background-image: url('sample/images/eye.png'); " +
+                        "-fx-background-repeat: no-repeat; " +
+                        "-fx-background-size: 100% 100%;");
                 password.setText(visiblePass);
                 repassword.setText(visibleRepass);
                 password.setVisible(true);
@@ -157,47 +181,12 @@ public class SignupController {
         }
     }
 
-    private void alert(String message, String kindOfAlert) {
-        try {
-            Alert alert;
-            if(kindOfAlert.equals("error")) {
-                alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("Error");
-            } else {
-                alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Successful signup");
-            }
-            alert.setContentText(message);
-            alert.showAndWait();
-        } catch (Exception e) {
-            System.err.println("Cannot load file!");
-        }
-    }
-
     public static boolean isValidEmail(String email) {
         // create the EmailValidator instance
         EmailValidator validator = EmailValidator.getInstance();
 
         // check for valid email addresses using isValid method
         return validator.isValid(email);
-    }
-
-    public static boolean isValidNumber(String number) {
-        String allNumbers = "0123456789";
-        char[] ch = new char[number.length()];
-        int numbers = 0;
-
-        if(number.length() == PHONE_AND_ACCOUNT_DIGIT_NUMBER) {
-            for (int i = 0; i < number.length(); i++) {
-                ch[i] = number.charAt(i);
-                if (allNumbers.contains(Character.toString(ch[i])))
-                    numbers++;
-                else
-                    return false;
-            }
-            return numbers == PHONE_AND_ACCOUNT_DIGIT_NUMBER;
-        }
-        return false;
     }
 
     public static boolean isValidPassword(String password) {

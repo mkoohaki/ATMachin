@@ -1,6 +1,10 @@
 package sample;
 
-import java.sql.*;
+import javafx.collections.ObservableList;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 
 public abstract class Database {
 
@@ -31,4 +35,12 @@ public abstract class Database {
 //    public abstract int insertRow(byte[] salt, String...columns) throws SQLException;
 //    public abstract int signup(String...columns) throws SQLException;
     public abstract boolean updatePassword(String pkId, String...columns) throws SQLException;
+    public abstract ObservableList activity(String accountNumber, String account) throws SQLException;
+    public abstract int insertActivityRow(String...columns) throws SQLException;
+    public abstract int insertRowTransaction(String...columns) throws SQLException;
+    public abstract String[][] eTransferMessages(String accountNumber) throws SQLException;
+    public abstract ObservableList eTransactions(String accountNumber) throws SQLException;
+    public abstract ObservableList eTransactionsInTransactions(String accountNumber, String account) throws SQLException;
+    public abstract boolean newMessages(String accountNumber) throws SQLException;
+    public abstract boolean updateETransaction(String...columns) throws SQLException;
 }
