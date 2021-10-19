@@ -6,4 +6,4 @@ This is a JavaFx application.<br>
 • It uses XAMPP as a local server (PHPMyAdmin) and is connected to MySql as a local database.<br>
 • For encryption, it salts the password with a 10 random characters and using SHA2-256 for hashing. Just the result save in database and nobody has access to the password.<br>
 • It uses SQL commands to get, insert, update, and delete data.<br>
-<img src="images/login.PNG" width="250px" height="auto">
+<img src="image/LogIn.PNG" width="250px" height="auto"><br>
