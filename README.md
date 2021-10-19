@@ -12,8 +12,10 @@ This is a JavaFx application.<br>
 <img src="images/SignUp.JPG" width="250" height="auto"><br>
 • In case the password is forgotten, users can<br>create another password.
 <img src="images/Forgot.JPG" width="250" height="auto"><img src="images/Forgot1.JPG" width="250" height="auto"><br>
-• When user login successfully
+• When user login successfully, there will be appeared a red attention message if a not confirmed etransaction exists.<br>
 <img src="images/Account.JPG" width="250" height="auto"><img src="images/New%20etransaction.JPG" width="250" height="auto"><br>
+• If users click on the E-Transaction history, they can see the history of etransactions, cancel the amount sent (before than other uuser confirmation, or confirm the transaction.<br>
+<img src="images/E-Transactions.JPG" width="250" height="auto"><br>
 • User can transfer, withdraw, deposit, or Etransfer money.<br>
 <img src="images/Transfer.JPG" width="250" height="auto"><img src="images/WthDep.JPG" width="250" height="auto"><img src="images/Etransfer.JPG" width="250" height="auto"><br>
 • User can see the transactions in each account with clicking on the amount.<br>
