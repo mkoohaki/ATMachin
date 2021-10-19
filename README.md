@@ -32,4 +32,4 @@ This is a JavaFx application.<br>
 <img src="images/Chequing%20transactions.JPG" width="250" height="auto"><img src="images/Saving%20transactions.JPG" width="250" height="auto"><br>
 
 • You can see the project files.
-<img src="images/projectTree.JPG" width="250" height="auto"><img src="images/Saving%20transactions.JPG" width="250" height="auto"><br>
+<img src="images/ProjectTree.JPG" width="250" height="auto"><img src="images/Saving%20transactions.JPG" width="250" height="auto"><br>
