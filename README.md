@@ -10,7 +10,7 @@ This is a JavaFx application.<br>
 <img src="images/LogIn.JPG" width="250" height="auto"><br>
 • Users can signup if they have not registered yet.
 <img src="images/SignUp.JPG" width="250" height="auto"><br>
-• In case the password is forgotten, users can create another password.
+• In case the password is forgotten, users can<br>create another password.
 <img src="images/Forgot.JPG" width="200" height="auto"><img src="images/Forgot1.JPG" width="200" height="auto"><br>
 •
 •
