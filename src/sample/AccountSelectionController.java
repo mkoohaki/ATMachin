@@ -1,8 +1,10 @@
-package sample;
+package sample.comtrollers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import sample.AccountDatabase;
+import sample.Partials;
 
 import java.net.URL;
 import java.sql.SQLException;

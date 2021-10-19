@@ -1,7 +1,8 @@
-package sample;
+package sample.comtrollers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import sample.Partials;
 
 import java.io.IOException;
 
