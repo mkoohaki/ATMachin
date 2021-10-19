@@ -1,4 +1,5 @@
 # ATMachin
+<style type="text/css"> 
 .image {
   margin-right="20px"
 }
@@ -13,7 +14,7 @@ This is a JavaFx application.<br>
 • Users can signup if they have not registered yet.
 <img src="images/SignUp.JPG" width="250" height="auto"><br>
 • In case the password is forgotten, users can<br>create another password.
-<img src="images/Forgot.JPG" width="250" height="auto"><img src="images/Forgot1.JPG class="image"" width="250" height="auto"><br>
+<img src="images/Forgot.JPG" width="250" height="auto" class="image"><img src="images/Forgot1.JPG" width="250" height="auto"><br>
 • When user login successfully
 <img src="images/Account.JPG" width="250" height="auto" class="image"><img src="images/New%20etransaction.JPG" width="250" height="auto"><br>
 
