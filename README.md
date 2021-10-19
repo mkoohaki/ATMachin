@@ -16,7 +16,7 @@ This is a JavaFx application.<br>
 <img src="images/Account.JPG" width="250" height="auto"><img src="images/New%20etransaction.JPG" width="250" height="auto"><br>
 • User can transfer, withdraw, deposit, or Etransfer money.<br>
 <img src="images/Transfer.JPG" width="250" height="auto"><img src="images/WthDep.JPG" width="250" height="auto"><img src="images/Etransfer.JPG" width="250" height="auto"><br>
-• User can see the transactions in each account with clicking on the amount.
+• User can see the transactions in each account with clicking on the amount.<br>
 <img src="images/Chequing%20transactions.JPG" width="250" height="auto"><img src="images/Saving%20transactions.JPG" width="250" height="auto"><br>
 •
 •
