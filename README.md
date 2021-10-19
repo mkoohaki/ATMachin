@@ -10,14 +10,14 @@ This is a JavaFx application.<br>
 <img src="images/LogIn.JPG" width="250" height="auto"><br>
 • Users can signup if they have not registered yet.
 <img src="images/SignUp.JPG" width="250" height="auto"><br>
-• In case the password is forgotten, users can<br>create another password.
+• In case the password is forgotten, users can create another password.<br>
 <img src="images/Forgot.JPG" width="250" height="auto"><img src="images/Forgot1.JPG" width="250" height="auto"><br>
 • When user login successfully, there will be appeared a red attention message if a not confirmed etransaction exists.<br>
 <img src="images/Account.JPG" width="250" height="auto"><img src="images/New%20etransaction.JPG" width="250" height="auto"><br>
 • If users click on the E-Transaction history/New e-transaction buttons, they can see the history of etransactions, cancel the amount sent (before than other uuser confirmation, or confirm the transaction.<br>
 <img src="images/E-Transactions.JPG" width="250" height="auto"><br>
-• User can change the unit currency with select currensy in the dropdown menu, application will get the exchange rateautomatically with using rest API from ExchangeRate-API.
-<img src="images/Account-1.JPG" width="250" height="auto"><img src="images/Account-2.JPG" width="250" height="auto"><br>
+• User can change the unit currency with select currensy in the dropdown menu, application will get the exchange rateautomatically with using rest API from ExchangeRate-API.<br>
+<img src="images/Account-1.jpg" width="250" height="auto"><img src="images/Account-2.JPG" width="250" height="auto"><br>
 • User can transfer, withdraw, deposit, or Etransfer money.<br>
 <img src="images/Transfer.JPG" width="250" height="auto"><img src="images/WthDep.JPG" width="250" height="auto"><img src="images/Etransfer.JPG" width="250" height="auto"><br>
 • User can see the transactions in each account with clicking on the amount.<br>
