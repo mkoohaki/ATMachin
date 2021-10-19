@@ -1,4 +1,4 @@
-package sample.comtrollers;
+package sample;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -11,11 +11,11 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.text.Text;
-import sample.AccountDatabase;
-import sample.ModelTable;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.text.NumberFormat;
+import java.util.Locale;
 
 public class TransactionsController {
 
@@ -42,19 +42,24 @@ public class TransactionsController {
     void setInfo(String accountNumber, String account) throws SQLException, IOException {
 
         accountNum = accountNumber;
+        Locale country =  new Locale("en", "ca");
+        NumberFormat count = NumberFormat.getCurrencyInstance(country);
 
         AccountDatabase db = new AccountDatabase();
         String[] accountInfo = db.login(accountNum);
 
         transactionsList = db.activity(accountNum, account);
-        eTransactionsList = db.eTransactionsInTransactions(accountNum, account);
+        if(account.equals("Saving"))
+            eTransactionsList = db.eTransactionsInTransactionsSaving(accountNum);
+        else
+            eTransactionsList = db.eTransactionsInTransactionsChecking(accountNum);
 
         if(account.equals("Checking")) {
-            balance.setText(accountInfo[6]);
+            balance.setText(count.format(Double.parseDouble(accountInfo[6])));
             title.setText("Chequing Transactions");
         }
         else if(account.equals("Saving")) {
-            balance.setText(accountInfo[7]);
+            balance.setText(count.format(Double.parseDouble(accountInfo[7])));
             title.setText("Saving Transactions");
         }
 

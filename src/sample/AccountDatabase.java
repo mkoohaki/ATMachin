@@ -160,9 +160,21 @@ public class AccountDatabase extends Database {
         statement = connection.createStatement();
         resultSet = statement.executeQuery(sql);
 
+        String status = null;
+
         while (resultSet.next()) {
-            observableList.add(new ModelTable(resultSet.getString("activityType"),
-                    resultSet.getString("amount"), resultSet.getString("date")));
+
+            if (resultSet.getString("activityType").equals("Transfer")){
+                if (resultSet.getString("accountFrom").equals(account))
+                    status = "Transfer-Withdraw";
+                else if (resultSet.getString("accountTo").equals(account))
+                    status = "Transfer-Deposit";
+            } else
+                status = resultSet.getString("activityType");
+
+
+            observableList.add(new ModelTable(
+                    status, resultSet.getString("amount"), resultSet.getString("date")));
         }
         return observableList;
     }
@@ -271,30 +283,45 @@ public class AccountDatabase extends Database {
     }
 
     @Override
-    public ObservableList eTransactionsInTransactions(String accountNumber, String account) throws SQLException {
+    public ObservableList eTransactionsInTransactionsChecking(String accountNumber) throws SQLException {
+
+//        String sql = String.format("SELECT * FROM `%s` WHERE (`account_to` = \"%s\" AND `confirm` = \"Confirmed\" AND " +
+//                            " `depositedAccount` = \"%s\" ) OR (`account_from` = \"%s\" AND `confirm` <> \"Canceled\")",
+//                    transactionTable, accountNumber, account, accountNumber);
 
         String sql = String.format("SELECT * FROM `%s` WHERE (`account_to` = \"%s\" AND `confirm` = \"Confirmed\" AND " +
-                    "`depositedAccount` = \"%s\") OR (`account_from` = \"%s\" )", transactionTable, accountNumber, account,
-                    accountNumber);
+                        " `depositedAccount` = \"Checking\" ) OR (`account_from` = \"%s\" AND `confirm` <> \"Canceled\")",
+                        transactionTable, accountNumber,  accountNumber);
+
         statement = connection.createStatement();
         resultSet = statement.executeQuery(sql);
         String status = null;
 
         while (resultSet.next()) {
 
-            if(resultSet.getString("account_from").equals(accountNumber) && !account.equals("Checking")) {
-                break;
-            } else if (resultSet.getString("account_from").equals(accountNumber) && account.equals("Checking")) {
-                status = "E-T-Withdraw";
-            } else if (resultSet.getString("account_to").equals(accountNumber)) {
-                if (resultSet.getString("depositedAccount").equals("Checking"))
-                    status = "E-T-Deposit";
-                else if (resultSet.getString("depositedAccount").equals("Saving"))
-                    status = "E-T-Deposit";
-            }
+            if (resultSet.getString("account_from").equals(accountNumber)) {
+                status = "ETransfer-Withdraw";
+            } else if (resultSet.getString("account_to").equals(accountNumber))
+                status = "ETransfer-Deposit";
 
             observableList.add(new ModelTable(
                     status, resultSet.getString("amount"), resultSet.getString("date")));
+        }
+        return observableList;
+    }
+
+    @Override
+    public ObservableList eTransactionsInTransactionsSaving(String accountNumber) throws SQLException {
+
+        String sql = String.format("SELECT * FROM `%s` WHERE (`account_to` = \"%s\" AND `confirm` = \"Confirmed\"  AND " +
+                        " `depositedAccount` = \"Saving\" )", transactionTable, accountNumber);
+        statement = connection.createStatement();
+        resultSet = statement.executeQuery(sql);
+
+        while (resultSet.next()) {
+
+            observableList.add(new ModelTable(
+                    "ETransfer-Deposit", resultSet.getString("amount"), resultSet.getString("date")));
         }
         return observableList;
     }

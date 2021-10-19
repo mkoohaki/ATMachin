@@ -11,7 +11,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<GridPane alignment="center" hgap="10" stylesheets="/CSS/style.css" vgap="10" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.comtrollers.TransactionsController">
+<GridPane alignment="center" hgap="10" stylesheets="/CSS/style.css" vgap="10" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.TransactionsController">
    <children>
       <Pane prefHeight="600.0" prefWidth="400.0" style="-fx-background-color: MIDNIGHTBLUE;">
          <children>
@@ -37,7 +37,7 @@
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
-            <Text fill="WHITE" layoutX="93.0" layoutY="534.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Balance         $" wrappingWidth="120.1796875">
+            <Text fill="WHITE" layoutX="93.0" layoutY="534.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Balance         " wrappingWidth="120.1796875">
                <font>
                   <Font size="18.0" />
                </font>

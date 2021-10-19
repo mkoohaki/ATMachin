@@ -40,7 +40,8 @@ public abstract class Database {
     public abstract int insertRowTransaction(String...columns) throws SQLException;
     public abstract String[][] eTransferMessages(String accountNumber) throws SQLException;
     public abstract ObservableList eTransactions(String accountNumber) throws SQLException;
-    public abstract ObservableList eTransactionsInTransactions(String accountNumber, String account) throws SQLException;
+    public abstract ObservableList eTransactionsInTransactionsChecking(String accountNumber) throws SQLException;
+    public abstract ObservableList eTransactionsInTransactionsSaving(String accountNumber) throws SQLException;
     public abstract boolean newMessages(String accountNumber) throws SQLException;
     public abstract boolean updateETransaction(String...columns) throws SQLException;
 }

@@ -1,4 +1,4 @@
-package sample.services;
+package sample;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -6,7 +6,6 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import sample.database.AccountDatabase;
 
 import java.sql.SQLException;
 import java.util.Arrays;

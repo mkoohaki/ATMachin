@@ -1,4 +1,4 @@
-package sample.comtrollers;
+package sample;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -6,8 +6,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.text.Text;
-import sample.AccountDatabase;
-import sample.Partials;
 
 import java.io.IOException;
 import java.net.URL;
@@ -70,12 +68,11 @@ public class TransferController implements Initializable {
         if (accountF.equals("Checking") && !accountT.equals("Checking")) {
             if (checkBalance >= amnt) {
                 checkBalance -= amnt;
-                switch (accountT) {
-                    case "Saving":
-                        saveBalance += amnt;
-                    case "Line of credit":
-                        lineBalance += amnt;
-                }
+                if (accountT.equals("Saving"))
+                    checkBalance += amnt;
+                else if (accountT.equals("Line of credit"))
+                    lineBalance += amnt;
+
                 done = true;
             } else {
                 msg = "Amount is larger than balance!";
@@ -83,12 +80,11 @@ public class TransferController implements Initializable {
         } else if (accountF.equals("Saving") && !accountT.equals("Saving")) {
             if (saveBalance >= amnt) {
                 saveBalance -= amnt;
-                switch (accountT) {
-                    case "Checking":
+                if (accountT.equals("Checking"))
                         checkBalance += amnt;
-                    case "Line of credit":
+                else if (accountT.equals("Line of credit"))
                         lineBalance += amnt;
-                }
+
                 done = true;
             } else {
                 msg = "Amount is larger than balance!";
@@ -96,12 +92,11 @@ public class TransferController implements Initializable {
         } else if (accountF.equals("Line of credit") && !accountT.equals("Line of credit")) {
             if (lineBalance >= amnt) {
                 lineBalance -= amnt;
-                switch (accountT) {
-                    case "Checking":
-                        checkBalance += amnt;
-                    case "Saving":
-                        saveBalance += amnt;
-                }
+                if (accountT.equals("Checking"))
+                    checkBalance += amnt;
+                else if (accountT.equals("Saving"))
+                    saveBalance += amnt;
+
                 done = true;
             } else {
                 msg = "Amount is larger than balance!";

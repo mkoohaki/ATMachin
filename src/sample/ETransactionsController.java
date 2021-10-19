@@ -1,4 +1,4 @@
-package sample.comtrollers;
+package sample;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -11,8 +11,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import sample.AccountDatabase;
-import sample.ModelTable;
 
 import java.io.IOException;
 import java.net.URL;
