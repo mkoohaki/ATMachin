@@ -14,9 +14,9 @@ This is a JavaFx application.<br>
 <img src="images/Forgot.JPG" width="250" height="auto"><img src="images/Forgot1.JPG" width="250" height="auto"><br>
 • When user login successfully
 <img src="images/Account.JPG" width="250" height="auto"><img src="images/New%20etransaction.JPG" width="250" height="auto"><br>
+• User can transfer, withdraw, deposit, or Etransfer money.
+<img src="images/Transfer.JPG" width="250" height="auto"><img src="images/WithDep.JPG" width="250" height="auto"><img src="images/Etransfer.JPG" width="250" height="auto"><br>
 
-•
-•
 •
 •
 •
