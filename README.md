@@ -17,10 +17,10 @@ This is a JavaFx application.<br>
 • If users click on the E-Transaction history/New e-transaction buttons, they can see the history of etransactions, cancel the amount sent (before than other uuser confirmation, or confirm the transaction. If user confirms transaction, a new window pops up and user has to select the deposit account.<br>
 <img src="images/New%20etransaction.JPG" width="250px" height="auto"><br>
 • User can change the unit currency with select currency in the dropdown menu, application will get the exchange rate automatically with using rest API from ExchangeRate-API.<br>
-<img src="images/Account-1.JPG" width="250px" height="auto"><img src="images/Account-2.JPG" width="250px" height="auto"><br>
+<img src="images/Account-1.jpg" width="250px" height="auto"><img src="images/Account-2.JPG" width="250px" height="auto"><br>
 • User can transfer, withdraw, deposit, or Etransfer money.<br>
 <img src="images/Transfer.JPG" width="250px" height="auto"><img src="images/WthDep.JPG" width="250px" height="auto"><img src="images/Etransfer.JPG" width="250px" height="auto"><br>
 • User can see the transactions in each account with clicking on the amount.<br>
-<img src="images/Chequing%20transactions.JPG" width="250px" height="auto"><img src="images/Saving%20%20transactions.JPG" width="250px" height="auto"><br>
+<img src="images/Chequing%20transactions.JPG" width="250px" height="auto"><img src="images/Saving%20transactions.JPG" width="250px" height="auto"><br>
 • You can see all project files.<br>
 <img src="images/ProjectTree.JPG" width="250px" height="auto"><br>
