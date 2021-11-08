@@ -8,7 +8,6 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.sql.SQLException;
-import java.util.Arrays;
 import java.util.Objects;
 
 public class Partials {
@@ -81,8 +80,6 @@ public class Partials {
 
         AccountDatabase db = new AccountDatabase();
         String[] accountInfo = db.login(accountNumber);
-
-        System.out.println(Arrays.toString(accountInfo));
         return accountInfo[0] != null;
     }
 }

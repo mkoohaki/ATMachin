@@ -11,7 +11,7 @@ public class AccountDatabase extends Database {
     private final String activityTable = "activity_info";
     private final String transactionTable = "transaction_info";
     private final String pkId = "accountNumber";
-    private final int numColumns = 9;
+    private final int numColumns = 12;
     private final int maxRowsReturned = 9;
     Connection connection = getConnection();
     Statement statement = connection.createStatement();
@@ -83,17 +83,32 @@ public class AccountDatabase extends Database {
 
     @Override
     public String[] login(String accountNumber) throws SQLException {
-        int loginColumns = 9;
-        String[] data = new String[loginColumns];
+
+        String[] data = new String[12];
         //String sql = String.format("SELECT * FROM `%s` WHERE `accountNumber` = \"%s\" and `Password` = \"%s\"", table, accountNumber, password);
         String sql = String.format("SELECT * FROM `%s` WHERE `accountNumber` = \"%s\"", accountTable, accountNumber);
         statement = connection.createStatement();
         resultSet = statement.executeQuery(sql);
 
         if (resultSet.next()) {
+            for (int i = 1; i < resultSet.getMetaData().getColumnCount()+1; i++) {
+                data[i - 1] = resultSet.getObject(i).toString();
+            }
+        }
+        return data;
+    }
+
+    @Override
+    public String[] email(String email) throws SQLException {
+
+        String[] data = new String[numColumns];
+        String sql = String.format("SELECT * FROM `%s` WHERE `email` = \"%s\"", accountTable, email);
+        statement = connection.createStatement();
+        resultSet = statement.executeQuery(sql);
+
+        if (resultSet.next()) {
             for (int i = 1; i < resultSet.getMetaData().getColumnCount(); i++) {
                 data[i - 1] = resultSet.getObject(i).toString();
-                System.out.println(data[i - 1]);
             }
         }
         return data;
@@ -105,11 +120,11 @@ public class AccountDatabase extends Database {
     }
 
     @Override
-    public int insertRow(String... columns) throws SQLException {
+    public void insertRow(String... columns) throws SQLException {
 
         // insertRow("first", "second", "third");
         String sql = String.format("INSERT INTO `%s` (`accountNumber`, `salt`, `saltedPassword`, `fullName`, `email`, `phoneNumber`," +
-                " `checkingBalance`,`savingBalance`, `lineBalance`) VALUE (?, ?, ?, ?, ?, ?, ?, ?, ?)", accountTable);
+                " `checkingBalance`,`savingBalance`, `lineBalance`, `activateNumber`, `activated`) VALUE (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", accountTable);
 
         PreparedStatement prepareStatement = connection.prepareStatement(sql);
         prepareStatement.setString(1, columns[0]);
@@ -121,14 +136,15 @@ public class AccountDatabase extends Database {
         prepareStatement.setString(7, columns[6]);
         prepareStatement.setString(8, columns[7]);
         prepareStatement.setString(9, columns[8]);
+        prepareStatement.setString(10, columns[9]);
+        prepareStatement.setString(11, columns[10]);
 
         int numRows = prepareStatement.executeUpdate();
 
-        return numRows;
     }
 
     @Override
-    public boolean updateRow(String pkId, String... columns) throws SQLException {
+    public void updateRow(String pkId, String... columns) throws SQLException {
 
         String sql = String.format("UPDATE `%s` SET `checkingBalance` = ?, `savingBalance` = ?, `lineBalance` = ? WHERE `accountNumber` = ?", accountTable);
         PreparedStatement prepareStatement = connection.prepareStatement(sql);
@@ -137,19 +153,18 @@ public class AccountDatabase extends Database {
         prepareStatement.setString(3, columns[2]);
         prepareStatement.setString(4, pkId);
         prepareStatement.executeUpdate();
-        return true;
     }
 
     @Override
-    public boolean updatePassword(String pkId, String... columns) throws SQLException {
+    public void updatePassword(String pkId, String... columns) throws SQLException {
 
-        String sql = String.format("UPDATE `%s` SET `salt` = ?, `saltedPassword` = ? WHERE `accountNumber` = ?", accountTable);
+        String sql = String.format("UPDATE `%s` SET `salt` = ?, `saltedPassword` = ?, `activateNumber` = \"\" WHERE " +
+                "`accountNumber` = ?", accountTable);
         PreparedStatement prepareStatement = connection.prepareStatement(sql);
         prepareStatement.setString(1, columns[0]);
         prepareStatement.setString(2, columns[1]);
         prepareStatement.setString(3, pkId);
         prepareStatement.executeUpdate();
-        return true;
     }
 
     @Override
@@ -180,7 +195,7 @@ public class AccountDatabase extends Database {
     }
 
     @Override
-    public int insertActivityRow(String... columns) throws SQLException {
+    public void insertActivityRow(String... columns) throws SQLException {
 
         String sql = String.format("INSERT INTO `%s` (`accountNo`, `activityType`, `accountFrom`, `accountTo`, `amount`) " +
                 "VALUE (?, ?, ?, ?, ?)", activityTable);
@@ -194,11 +209,10 @@ public class AccountDatabase extends Database {
 
         int numRows = prepareStatement.executeUpdate();
 
-        return numRows;
     }
 
     @Override
-    public int insertRowTransaction(String... columns) throws SQLException {
+    public void insertRowTransaction(String... columns) throws SQLException {
 
         String sql = String.format("INSERT INTO `%s` (`confirm`, `account_from`, `account_to`, `amount`) " +
                 "VALUE (?, ?, ?, ?)", transactionTable);
@@ -211,7 +225,6 @@ public class AccountDatabase extends Database {
 
         int numRows = prepareStatement.executeUpdate();
 
-        return numRows;
     }
 //
 //    @Override
@@ -344,7 +357,7 @@ public class AccountDatabase extends Database {
     }
 
     @Override
-    public boolean updateETransaction(String... columns) throws SQLException {
+    public void updateETransaction(String... columns) throws SQLException {
 
         String sql = String.format("UPDATE `%s` SET `confirm` = ?, `depositedAccount` = ? WHERE `account_from` = ? AND " +
                 "`account_to` = ? AND `amount` = ? AND `date` = ?", transactionTable);
@@ -357,6 +370,24 @@ public class AccountDatabase extends Database {
         prepareStatement.setString(6, columns[5]);
 
         prepareStatement.executeUpdate();
-        return true;
+    }
+
+    @Override
+    public void updateActivation(String pkId) throws SQLException {
+
+        String sql = String.format("UPDATE `%s` SET `activateNumber` = \"\", `activated` = \"True\" WHERE `accountNumber` = ?", accountTable);
+        PreparedStatement prepareStatement = connection.prepareStatement(sql);
+        prepareStatement.setString(1, pkId);
+        prepareStatement.executeUpdate();
+    }
+
+    @Override
+    public void activationCodeUpdate(String... columns) throws SQLException {
+
+        String sql = String.format("UPDATE `%s` SET `activateNumber` = ? WHERE `accountNumber` = ?", accountTable);
+        PreparedStatement prepareStatement = connection.prepareStatement(sql);
+        prepareStatement.setString(1, columns[0]);
+        prepareStatement.setString(2, columns[1]);
+        prepareStatement.executeUpdate();
     }
 }

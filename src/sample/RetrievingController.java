@@ -8,24 +8,24 @@ import javafx.scene.text.Text;
 
 import javax.xml.bind.DatatypeConverter;
 import java.sql.SQLException;
+import java.util.Random;
 
 public class RetrievingController {
 
     @FXML
-    TextField accountNo, email;
+    TextField accountNo, email, code;
 
     @FXML
     PasswordField password, repassword;
 
     @FXML
-    Text textPass, textRepass;
+    Text textPass, textRepass, textCode;
 
     @FXML
     javafx.scene.control.Button getInfo, submitInfo;
 
     private static final int ACCOUNT_DIGIT_NUMBER = 10;
     String accountNumber, emailAddress, pass, repass;
-
 
     @FXML
     private void retrieving(ActionEvent event) throws SQLException {
@@ -38,53 +38,77 @@ public class RetrievingController {
                 if(SignupController.isValidEmail(emailAddress)){
 
                     AccountDatabase db = new AccountDatabase();
-                    Object[] accountInfo = db.login(accountNumber);
+                    String[] accountInfo = db.login(accountNumber);
 
                     if (accountInfo[0] != null) {
-                        String gotEmail = accountInfo[4].toString();
+                        if (accountInfo[4].equals(emailAddress)) {
+                            if (accountInfo[11].equals("True")) {
 
-                        if (gotEmail.equals(emailAddress)) {
-//                            FXMLLoader loader = new FXMLLoader(getClass().getResource("account.fxml"));
-//                            Parent root = loader.load();
-//                            AccountController accountController = loader.getController();
-//                            accountController.setInfo(accountInfo[0], accountInfo[6], accountInfo[7], accountInfo[8]);
-//                            onClick.getScene().setRoot(root);
-                            textPass.setVisible(true);
-                            password.setVisible(true);
-                            textRepass.setVisible(true);
-                            repassword.setVisible(true);
-                            submitInfo.setVisible(true);
+                                Random rnd = new Random();
+                                int randomNumber = rnd.nextInt(999999);
+                                String number = String.valueOf(randomNumber);
+
+                                SendEmail.mailing(emailAddress, accountInfo[3], number, "activate code");
+                                db.activationCodeUpdate(number, accountInfo[0]);
+
+                                Partials.alert("Check your email for activation code","notification");
+
+                                textPass.setVisible(true);
+                                password.setVisible(true);
+                                textRepass.setVisible(true);
+                                repassword.setVisible(true);
+                                code.setVisible(true);
+                                textCode.setVisible(true);
+                                submitInfo.setVisible(true);
+                            } else {
+                                Partials.alert("Account is not activated","error");
+                            }
                         } else {
-                            alert("Email address is wrong","error");
+                            Partials.alert("Email address is wrong","error");
                         }
                     } else {
-                        alert("Account number is wrong","error");
+                        Partials.alert("Account number is wrong","error");
                     }
                 } else {
-                    alert("Enter a valid email address","error");
+                    Partials.alert("Enter a valid email address","error");
                 }
             } else {
-                alert("Account number is needed, it is a 10 digits number","error");
+                Partials.alert("Account number is needed, it is a 10 digits number","error");
             }
         } catch (Exception e) {
             System.err.println("Cannot load file!"+e);
         }
     }
 
-    private void alert(String message, String kindOfAlert) {
-        try {
-            javafx.scene.control.Alert alert;
-            if(kindOfAlert.equals("error")) {
-                alert = new javafx.scene.control.Alert(javafx.scene.control.Alert.AlertType.ERROR);
-                alert.setTitle("Error");
+    @FXML
+    private void submitNewPass(ActionEvent event) throws Exception {
+
+        pass = password.getText();
+        repass = repassword.getText();
+        AccountDatabase db = new AccountDatabase();
+        String[] accountInfo = db.login(accountNumber);
+
+        if (code.getText().equals(accountInfo[10])) {
+            if (SignupController.isValidPassword(pass)) {
+                if (pass.equals(repass)) {
+                    byte[] secureSalt = SignupController.createSecureRandomSalt();
+                    byte[] sha2Hash = SignupController.createSHA2Hash(pass, secureSalt);
+                    String salt = SignupController.hexToAscii(DatatypeConverter.printHexBinary(secureSalt));
+                    String hashedPass = DatatypeConverter.printHexBinary(sha2Hash);
+
+                    db.updatePassword(accountNumber, salt, hashedPass);
+                    SendEmail.mailing(accountInfo[4], accountInfo[3], "", "password changed");
+                    Partials.alert("Password is changed successfully", "notification");
+                    Partials.windowOpen("login", "Royal Canadian Bank", 600, 400);
+                    Partials.windowClose(event);
+                } else {
+                    Partials.alert("Password and repassword are not matched", "error");
+                }
             } else {
-                alert = new javafx.scene.control.Alert(javafx.scene.control.Alert.AlertType.INFORMATION);
-                alert.setTitle("Successful signup");
+                Partials.alert("Password must be between 8-16 character, at least:\n2 uppercase, 2 lowercase, 4 digits, and 1 special sign", "error");
             }
-            alert.setContentText(message);
-            alert.showAndWait();
-        } catch (Exception e) {
-            System.err.println("Cannot load file!");
+        } else {
+            Partials.alert("Activation code is wrong", "error");
         }
     }
 
@@ -95,34 +119,6 @@ public class RetrievingController {
             Partials.windowClose(event);
         } catch (Exception e) {
             System.err.println("Cannot load file!");
-        }
-    }
-
-    @FXML
-    private void submitNewPass(ActionEvent event) throws Exception {
-
-        pass = password.getText();
-        repass = repassword.getText();
-
-        if (SignupController.isValidPassword(pass)) {
-            if (pass.equals(repass)) {
-
-                byte[] secureSalt = SignupController.createSecureRandomSalt();
-                byte[] sha2Hash = SignupController.createSHA2Hash(pass, secureSalt);
-                String salt = SignupController.hexToAscii(DatatypeConverter.printHexBinary(secureSalt));
-                String hashedPass = DatatypeConverter.printHexBinary(sha2Hash);
-
-                AccountDatabase db = new AccountDatabase();
-                db.updatePassword(accountNumber, salt, hashedPass);
-
-                alert("Password is changed successfully", "notification");
-                Partials.windowOpen("login", "Royal Canadian Bank", 600, 400);
-                Partials.windowClose(event);
-            } else {
-                alert("Password and repassword are not matched", "error");
-            }
-        } else {
-            alert("Password must be between 8-16 character, at least:\n2 uppercase, 2 lowercase, 4 digits, and 1 special sign", "error");
         }
     }
 }

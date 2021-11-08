@@ -26,5 +26,6 @@
     </orderEntry>
     <orderEntry type="library" name="mysql.connector.java" level="project" />
     <orderEntry type="library" name="Maven: org.jruby:jruby-complete:9.1.17.0" level="project" />
+    <orderEntry type="library" name="activation-1.1.1" level="project" />
   </component>
 </module>

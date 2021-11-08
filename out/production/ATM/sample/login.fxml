@@ -19,7 +19,7 @@
                   <Font name="System Bold" size="18.0" />
                </font>
             </Button>
-            <TextField fx:id="accountNo" layoutX="152.0" layoutY="230.0" prefHeight="25.0" prefWidth="212.0">
+            <TextField fx:id="accountNo" alignment="CENTER" layoutX="152.0" layoutY="230.0" prefHeight="25.0" prefWidth="212.0" promptText="— — — — — — — — — — ">
                <font>
                   <Font size="14.0" />
                </font>

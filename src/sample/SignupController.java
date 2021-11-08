@@ -7,8 +7,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import org.apache.commons.validator.routines.EmailValidator;
-import sample.AccountDatabase;
-import sample.Partials;
 
 import javax.xml.bind.DatatypeConverter;
 import java.io.ByteArrayOutputStream;
@@ -18,6 +16,7 @@ import java.security.MessageDigest;
 import java.security.SecureRandom;
 import java.sql.SQLException;
 import java.util.Locale;
+import java.util.Random;
 import java.util.ResourceBundle;
 
 public class SignupController  implements Initializable {
@@ -72,42 +71,60 @@ public class SignupController  implements Initializable {
             }
 
             if(Partials.isValidNumber(accountNumber)) {
-                if(!name.isEmpty()) {
-                    if(isValidEmail(emailAddress)) {
-                        if(Partials.isValidNumber(phoneNumber)){
-                            if (isValidPassword(pass)) {
-                                if (pass.equals(repass)) {
 
-                                    byte[] secureSalt = createSecureRandomSalt();
-                                    System.out.println("Secure Salt = " + DatatypeConverter.printHexBinary(secureSalt));
+                if(!Partials.isValidAccount(accountNumber)) {
+                    if(!name.isEmpty()) {
+                        if(isValidEmail(emailAddress)) {
+                            if(isUniqueEmail(emailAddress)) {
+                                if (Partials.isValidNumber(phoneNumber)) {
+                                    if (isValidPassword(pass)) {
+                                        if (pass.equals(repass)) {
 
-                                    byte[] sha2Hash = createSHA2Hash(pass, secureSalt);
-                                    System.out.println("Password: " + pass);
-                                    String salt = hexToAscii(DatatypeConverter.printHexBinary(secureSalt));
-                                    System.out.println("Generated salt in ASCII: " + salt);
-                                    System.out.println("Salted password in ASCII: " + salt + pass);
-                                    String hashedPass = DatatypeConverter.printHexBinary(sha2Hash);
-                                    System.out.println("Generated hash: " + hashedPass);
+                                            byte[] secureSalt = createSecureRandomSalt();
+                                            System.out.println("Secure Salt = " + DatatypeConverter.printHexBinary(secureSalt));
 
-                                    AccountDatabase db = new AccountDatabase();
-                                    db.insertRow(accountNumber, salt, hashedPass, name, emailAddress, phoneNumber, "0", "0", "0");
-                                    Partials.alert("Information saved", "notification");
-                                    Partials.windowOpen("login", "Royal Canadian Bank", 600, 400);
-                                    Partials.windowClose(event);
+                                            byte[] sha2Hash = createSHA2Hash(pass, secureSalt);
+                                            System.out.println("Password: " + pass);
+                                            String salt = hexToAscii(DatatypeConverter.printHexBinary(secureSalt));
+                                            System.out.println("Generated salt in ASCII: " + salt);
+                                            System.out.println("Salted password in ASCII: " + salt + pass);
+                                            String hashedPass = DatatypeConverter.printHexBinary(sha2Hash);
+                                            System.out.println("Generated hash: " + hashedPass);
+
+                                            // Random code generator
+                                            Random rnd = new Random();
+                                            int randomNumber = rnd.nextInt(999999);
+                                            String number = String.valueOf(randomNumber);
+
+                                            AccountDatabase db = new AccountDatabase();
+                                            db.insertRow(accountNumber, salt, hashedPass, name, emailAddress, phoneNumber, "0", "0", "0", number, "False");
+                                            Partials.windowOpen("login", "Royal Canadian Bank", 600, 400);
+                                            Partials.windowClose(event);
+
+                                            SendEmail.mailing(emailAddress, name, number, "activate code");
+                                            Partials.alert("You signed up successfully, for account activation\n" +
+                                                                   "please check your email address for activation code.",
+                                                         "notification");
+                                        } else {
+                                            Partials.alert("Password and repassword are not matched", "error");
+                                        }
+                                    } else {
+                                        Partials.alert("Password must be between 8-16 character, at least:\n2 uppercase, 2 lowercase, 4 digits, and 1 special sign", "error");
+                                    }
                                 } else {
-                                    Partials.alert("Password and repassword are not matched", "error");
+                                    Partials.alert("Phone number is not valid,\nIt is not mandatory", "error");
                                 }
                             } else {
-                                Partials.alert("Password must be between 8-16 character, at least:\n2 uppercase, 2 lowercase, 4 digits, and 1 special sign", "error");
+                                Partials.alert("Email address is already used", "error");
                             }
                         } else {
-                            Partials.alert("Phone number is not valid,\nIt is not mandatory", "error");
+                            Partials.alert("Valid email address is needed", "error");
                         }
                     } else {
-                        Partials.alert("Valid email address is needed", "error");
+                        Partials.alert("Full name is needed", "error");
                     }
                 } else {
-                    Partials.alert("Full name is needed", "error");
+                    Partials.alert("Account number is already registered", "error");
                 }
             } else {
                 Partials.alert("Account number must be a 10 digit number", "error");
@@ -189,6 +206,14 @@ public class SignupController  implements Initializable {
 
         // check for valid email addresses using isValid method
         return validator.isValid(email);
+    }
+
+    public static boolean isUniqueEmail(String email) throws SQLException {
+
+        AccountDatabase db = new AccountDatabase();
+        String[] accountInfo = db.email(email);
+
+        return accountInfo[4] == null;
     }
 
     public static boolean isValidPassword(String password) {

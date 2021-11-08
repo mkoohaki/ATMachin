@@ -69,7 +69,7 @@ public class TransferController implements Initializable {
             if (checkBalance >= amnt) {
                 checkBalance -= amnt;
                 if (accountT.equals("Saving"))
-                    checkBalance += amnt;
+                    saveBalance += amnt;
                 else if (accountT.equals("Line of credit"))
                     lineBalance += amnt;
 

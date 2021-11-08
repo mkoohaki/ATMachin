@@ -14,22 +14,22 @@
    <children>
       <Pane prefHeight="600.0" prefWidth="400.0" style="-fx-background-color: white;">
          <children>
-            <Button fx:id="getInfo" defaultButton="true" layoutX="139.0" layoutY="270.0" mnemonicParsing="false" onAction="#retrieving" prefHeight="13.0" prefWidth="124.0" style="-fx-background-color: #3109aa;" text="Retrieving" textAlignment="CENTER" textFill="#fffcfc">
+            <Button fx:id="getInfo" defaultButton="true" layoutX="140.0" layoutY="240.0" mnemonicParsing="false" onAction="#retrieving" prefHeight="13.0" prefWidth="125.0" style="-fx-background-color: #3109aa;" text="Retrieving" textAlignment="CENTER" textFill="#fffcfc">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
             </Button>
-            <TextField fx:id="accountNo" layoutX="152.0" layoutY="150.0" prefHeight="25.0" prefWidth="212.0">
+            <TextField fx:id="accountNo" layoutX="160.0" layoutY="130.0" prefHeight="25.0" prefWidth="200.0">
                <font>
                   <Font size="14.0" />
                </font>
             </TextField>
-            <Text layoutX="50.0" layoutY="170.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Account No.">
+            <Text layoutX="40.0" layoutY="150.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Account No.">
                <font>
                   <Font size="18.0" />
                </font>
             </Text>
-            <Text layoutX="50.0" layoutY="220.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email">
+            <Text layoutX="40.0" layoutY="200.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email">
                <font>
                   <Font size="18.0" />
                </font>
@@ -44,36 +44,46 @@
                   <Font size="14.0" />
                </font>
             </Button>
-            <Text fx:id="textPass" layoutX="50.0" layoutY="370.0" strokeType="OUTSIDE" strokeWidth="0.0" text="New Pass." visible="false">
+            <Text fx:id="textPass" layoutX="40.0" layoutY="385.0" strokeType="OUTSIDE" strokeWidth="0.0" text="New Password" visible="false">
                <font>
                   <Font size="18.0" />
                </font>
             </Text>
-            <PasswordField fx:id="password" layoutX="152.0" layoutY="350.0" prefHeight="30.0" prefWidth="212.0" visible="false">
+            <PasswordField fx:id="password" layoutX="165.0" layoutY="365.0" prefHeight="30.0" prefWidth="200.0" visible="false">
                <font>
                   <Font size="14.0" />
                </font>
             </PasswordField>
-            <Text fx:id="textRepass" layoutX="50.0" layoutY="420.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Repass." visible="false">
+            <Text fx:id="textRepass" layoutX="40.0" layoutY="435.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Repassword" visible="false">
                <font>
                   <Font size="18.0" />
                </font>
             </Text>
-            <PasswordField fx:id="repassword" layoutX="152.0" layoutY="400.0" prefHeight="30.0" prefWidth="212.0" visible="false">
+            <PasswordField fx:id="repassword" layoutX="165.0" layoutY="415.0" prefHeight="30.0" prefWidth="200.0" visible="false">
                <font>
                   <Font size="14.0" />
                </font>
             </PasswordField>
-            <TextField fx:id="email" layoutX="152.0" layoutY="200.0" prefHeight="25.0" prefWidth="212.0">
+            <TextField fx:id="email" layoutX="160.0" layoutY="180.0" prefHeight="25.0" prefWidth="200.0">
                <font>
                   <Font size="14.0" />
                </font>
             </TextField>
-            <Button fx:id="submitInfo" defaultButton="true" layoutX="105.0" layoutY="470.0" mnemonicParsing="false" onAction="#submitNewPass" prefHeight="37.0" prefWidth="193.0" style="-fx-background-color: LIGHTGREEN;" text="Submit New Password" textAlignment="CENTER" textFill="#010101" visible="false">
+            <Button fx:id="submitInfo" defaultButton="true" layoutX="105.0" layoutY="475.0" mnemonicParsing="false" onAction="#submitNewPass" prefHeight="37.0" prefWidth="193.0" style="-fx-background-color: LIGHTGREEN;" text="Submit New Password" textAlignment="CENTER" textFill="#010101" visible="false">
                <font>
                   <Font name="System Bold" size="16.0" />
                </font>
             </Button>
+            <Text fx:id="textCode" layoutX="40.0" layoutY="335.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Code" visible="false">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <TextField fx:id="code" layoutX="165.0" layoutY="315.0" prefHeight="30.0" prefWidth="200.0" visible="false">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </TextField>
          </children>
       </Pane>
    </children>

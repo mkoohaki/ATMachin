@@ -5,7 +5,6 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
@@ -13,11 +12,9 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.io.IOException;
-import java.net.URL;
 import java.sql.SQLException;
-import java.util.ResourceBundle;
 
-public class ETransactionsController implements Initializable {
+public class ETransactionsController{
     @FXML
     javafx.scene.control.Button onClick;
 
@@ -48,10 +45,6 @@ public class ETransactionsController implements Initializable {
         col_button.setCellValueFactory(new PropertyValueFactory<>("button"));
 
         table.setItems(observableList);
-    }
-
-    @Override
-    public void initialize(URL arg0, ResourceBundle arg1) {
     }
 
     @FXML
