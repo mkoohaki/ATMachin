@@ -13,6 +13,6 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
 
-        Partials.windowOpen("welcome", "Royal Canadian Bank", 600, 400);
+        Partials.windowOpen("enter", "Royal Canadian Bank", 600, 400);
     }
 }

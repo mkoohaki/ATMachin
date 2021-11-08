@@ -6,6 +6,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import sample.database.AccountDatabase;
 
 import java.sql.SQLException;
 import java.util.Objects;
@@ -17,7 +18,7 @@ public class Partials {
     public static void windowOpen(String fileName, String title, int width, int height) throws Exception {
 
         Stage primaryStage = new Stage();
-        Parent root = FXMLLoader.load(Objects.requireNonNull(Partials.class.getResource(fileName + ".fxml")));
+        Parent root = FXMLLoader.load(Objects.requireNonNull(Partials.class.getResource("interfaces/" + fileName + ".fxml")));
         primaryStage.setTitle(title);
         primaryStage.setScene(new Scene(root, height, width));
         primaryStage.setResizable(false);
