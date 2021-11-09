@@ -113,16 +113,4 @@ public class ETransferController implements Initializable {
             System.err.println("Cannot load file! " + e);
         }
     }
-
-//    public void confirm(String account_to, double amount) {
-//        try {
-//            FXMLLoader loader = new FXMLLoader(getClass().getResource("accountSelection.fxml"));
-//            Parent root = loader.load();
-//            AccountSelectionController accountSelectionController = loader.getController();
-//            accountSelectionController.setInfo(account_to, amount);
-//            confirm.getScene().setRoot(root);
-//        } catch (Exception e) {
-//            System.err.println("Cannot load file! " + e);
-//        }
-//    }
 }

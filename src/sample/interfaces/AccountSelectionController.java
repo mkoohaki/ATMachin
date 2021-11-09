@@ -3,8 +3,8 @@ package sample.interfaces;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import sample.database.AccountDatabase;
 import sample.Partials;
+import sample.database.AccountDatabase;
 
 import java.net.URL;
 import java.sql.SQLException;
@@ -16,7 +16,7 @@ public class AccountSelectionController implements Initializable {
     private javafx.scene.control.ChoiceBox<String> account;
 
     @FXML
-    javafx.scene.control.Button onClick;
+    javafx.scene.control.Button onClick, back;
 
     private final String[] accounts = {"Select", "Checking", "Saving"};
     static String account_from, account_to, date;

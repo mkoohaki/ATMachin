@@ -11,8 +11,11 @@ public class SendEmail {
 
     public static void mailing(String to, String name, String number, String from, String amount, String type) {
         String host = "smtp.gmail.com";
-        final String username = "atmachine.application@gmail.com";
-        final String password = "dhnqbscpjiryntok";
+
+        /*
+        * Hear you need to use your information, use your email address and active SMTP */
+        final String username = "XXXXXXX@XXXXXXXX"; // Email address
+        final String password = "XXXXXXXXXXXXXXXX"; // Password or activation STMP code
 
         // Get system properties
         Properties props = System.getProperties();
@@ -46,41 +49,56 @@ public class SendEmail {
 
             switch (type) {
 
+                case "signed up":
+                    title = "Activation Code";
+                    content = "you have signed up in ATMachine</p><br/><br/><p><b>The activation code is: <font size=3>"
+                            + number + "</font></b><p>This code is just for one time use</p>";
+                    break;
+
                 case "activate code":
                     title = "Activation Code";
-                    content = "The activation code is: " + number + "\n\n\n\n\n\n";
+                    content = "you have requested password changing in ATMachine</p><br/><br/><p><b>The activation code is: <font size=3>"
+                            + number + "</font></b><p>This code is just for one time use</p>";
                     break;
 
                 case "activation":
                     title = "Activated Account";
-                    content = "Your account in ATMachine is activated now!\n\n\n\n\n\n";
+                    content = "</p><br/><br/><p><b>Your account in ATMachine is activated now!</b>";
                     break;
 
                 case "password changed":
                     title = "APassword Is Changed";
-                    content = "Your account in ATMachine is activated now!\n\n\n\n\n\n";
+                    content = "</p><br/><br/><p><b>Your password in ATMachine account is changed!</b>";
                     break;
 
                 case "etransfer":
                     title = "E-Transfer Receiving";
-                    content = "Your Have received " + amount + "$ via E-Transfer from " + from + "\nplease log in ATMachine for deposit\n\n\n\n\n\n";
+                    content = "</p><br/><br/><p><b>You Have received <font size=3><U>$" + amount +
+                            "</U></font> via E-Transfer from <font size=3><U>"
+                            + from + "</U></font></b>,<br/>please log in ATMachine for deposit";
                     break;
             }
 
             String messageTitle = "ATMachine - " + title;
-            String messsageBody = " From: ATMachine Application\n\n" +
-                                  " Dear " + name + ", \n\n" +
-                                  " This is an automate email and sending to you because you have signed up in ATMachine\n\n\n\n\n" +
-                                  content +
-                                  " This code is just for one time use\n\n\n" +
-                                  " If you have not signed up at the ATMachine application, then please discard this mail\n\n" +
-                                  " Please DO NOT REPLY\n\n" +
-                                  " Regards";
+            String messsageBody =
+                    "<html>" +
+                    "<body>" +
+                    "<br/>" +
+                    "<br/>" +
+                    "<h><U>ATMachine Application</U></h><br/><br/><br/>" +
+                    "<p>Dear <b>" + name + "</b>,<br/>" +
+                    "<p>This is an automate email and sending to you because " + content + "</p><br/><br/><br/><br/>" +
+                    "<p>If you do not have account at the ATMachine application, then please discard this mail</p><br/>" +
+                    "<p>**Please DO NOT REPLY**</p><br/><br/>" +
+                    "<p>ATMachine admin team</p>" +
+                    "<p>Regards</p>" +
+                    "</body>" +
+                    "</html>";
 
             message.setSubject(messageTitle);
 
             // Now set the actual message
-            message.setText(messsageBody);
+            message.setContent(messsageBody, "text/html; charset=utf-8");
 
             // Send message
             Transport.send(message);

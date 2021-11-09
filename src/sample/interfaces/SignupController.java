@@ -7,8 +7,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import org.apache.commons.validator.routines.EmailValidator;
-import sample.database.AccountDatabase;
 import sample.Partials;
+import sample.database.AccountDatabase;
 import sample.partials.SendEmail;
 
 import javax.xml.bind.DatatypeConverter;
@@ -19,7 +19,6 @@ import java.security.MessageDigest;
 import java.security.SecureRandom;
 import java.sql.SQLException;
 import java.util.Locale;
-import java.util.Random;
 import java.util.ResourceBundle;
 
 public class SignupController  implements Initializable {
@@ -101,7 +100,7 @@ public class SignupController  implements Initializable {
                                             Partials.windowOpen("login", "Royal Canadian Bank", 600, 400);
                                             Partials.windowClose(event);
 
-                                            SendEmail.mailing(emailAddress, name, activationCode, "", "", "activate code");
+                                            SendEmail.mailing(emailAddress, name, activationCode, "", "", "signed up");
                                             Partials.alert("You signed up successfully, for account activation\n" +
                                                                    "please check your email address for activation code.",
                                                          "notification");

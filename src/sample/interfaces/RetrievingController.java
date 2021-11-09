@@ -46,8 +46,6 @@ public class RetrievingController {
                                 SendEmail.mailing(emailAddress, accountInfo[3], activationCode, "", "","activate code");
                                 db.activationCodeUpdate(activationCode, accountInfo[0]);
 
-                                Partials.alert("Check your email for activation code","notification");
-
                                 textPass.setVisible(true);
                                 password.setVisible(true);
                                 textRepass.setVisible(true);
@@ -56,6 +54,7 @@ public class RetrievingController {
                                 textCode.setVisible(true);
                                 submitInfo.setVisible(true);
                                 resendButton.setVisible(true);
+                                Partials.alert("Check your email for activation code","notification");
                             } else {
                                 Partials.alert("Account is not activated","error");
                             }

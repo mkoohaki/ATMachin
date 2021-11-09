@@ -8,7 +8,6 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import sample.database.AccountDatabase;
 import sample.Partials;
-
 import javax.xml.bind.DatatypeConverter;
 import java.io.ByteArrayOutputStream;
 import java.nio.charset.StandardCharsets;
@@ -46,7 +45,8 @@ public class LoginController {
 
                         if (hashedPass.equals(accountInfo[2])) {
                             if(accountInfo[11].equals("True")) {
-                                db.updateActivation(accountInfo[0]);
+                                if (!accountInfo[10].equals(""))
+                                    db.updateActivation(accountInfo[0]);
                                 FXMLLoader loader = new FXMLLoader(getClass().getResource("account.fxml"));
                                 Parent root = loader.load();
                                 AccountController accountController = loader.getController();
