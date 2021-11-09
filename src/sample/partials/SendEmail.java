@@ -9,7 +9,7 @@ import java.util.Properties;
 
 public class SendEmail {
 
-    public static void mailing(String to, String name, String number, String type) {
+    public static void mailing(String to, String name, String number, String from, String amount, String type) {
         String host = "smtp.gmail.com";
         final String username = "atmachine.application@gmail.com";
         final String password = "dhnqbscpjiryntok";
@@ -45,20 +45,25 @@ public class SendEmail {
             String content = "";
 
             switch (type) {
-                case "activate code":
 
+                case "activate code":
                     title = "Activation Code";
                     content = "The activation code is: " + number + "\n\n\n\n\n\n";
                     break;
-                case "activation":
 
+                case "activation":
                     title = "Activated Account";
                     content = "Your account in ATMachine is activated now!\n\n\n\n\n\n";
                     break;
-                case "password changed":
 
+                case "password changed":
                     title = "APassword Is Changed";
                     content = "Your account in ATMachine is activated now!\n\n\n\n\n\n";
+                    break;
+
+                case "etransfer":
+                    title = "E-Transfer Receiving";
+                    content = "Your Have received " + amount + "$ via E-Transfer from " + from + "\nplease log in ATMachine for deposit\n\n\n\n\n\n";
                     break;
             }
 

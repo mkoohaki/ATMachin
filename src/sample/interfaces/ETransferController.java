@@ -8,6 +8,7 @@ import javafx.scene.Parent;
 import javafx.scene.text.Text;
 import sample.database.AccountDatabase;
 import sample.Partials;
+import sample.partials.SendEmail;
 
 import java.net.URL;
 import java.sql.SQLException;
@@ -65,10 +66,12 @@ public class ETransferController implements Initializable {
                             double amnt = Double.parseDouble(amount.getText());
                             if (checkBalance_from >= amnt) {
                                 checkBalance_from -= amnt;
-
+                                String[] accountInfo_to = db.login(account_to);
                                 db.updateRow(account_from, String.valueOf(checkBalance_from), savingBal_from, lineBal_from);
                                 db.insertRowTransaction("Not Confirmed", account_from, account_to, String.valueOf(amnt));
                                 Partials.alert("Transaction done successfully", "notification");
+                                SendEmail.mailing(accountInfo_to[4], accountInfo_to[3], "", accountInfo_from[3],
+                                        String.valueOf(amnt), "etransfer");
                             } else {
                                 message.setText("Amount is larger than balance!");
                             }

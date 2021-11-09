@@ -38,7 +38,7 @@ public class ActivateCodeController {
 
         if(accountInfo[10].equals(activateNumber)) {
             db.updateActivation(accountInfo[0]);
-            SendEmail.mailing(accountInfo[4], accountInfo[3], "", "activation");
+            SendEmail.mailing(accountInfo[4], accountInfo[3], "", "", "", "activation");
             FXMLLoader loader = new FXMLLoader(getClass().getResource("account.fxml"));
             Parent root = loader.load();
             AccountController accountController = loader.getController();

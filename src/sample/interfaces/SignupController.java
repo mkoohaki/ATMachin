@@ -94,17 +94,14 @@ public class SignupController  implements Initializable {
                                             String hashedPass = DatatypeConverter.printHexBinary(sha2Hash);
                                             System.out.println("Generated hash: " + hashedPass);
 
-                                            // Random code generator
-                                            Random rnd = new Random();
-                                            int randomNumber = rnd.nextInt(999999);
-                                            String number = String.valueOf(randomNumber);
+                                            String activationCode = Partials.activationCode();
 
                                             AccountDatabase db = new AccountDatabase();
-                                            db.insertRow(accountNumber, salt, hashedPass, name, emailAddress, phoneNumber, "0", "0", "0", number, "False");
+                                            db.insertRow(accountNumber, salt, hashedPass, name, emailAddress, phoneNumber, "0", "0", "0", activationCode, "False");
                                             Partials.windowOpen("login", "Royal Canadian Bank", 600, 400);
                                             Partials.windowClose(event);
 
-                                            SendEmail.mailing(emailAddress, name, number, "activate code");
+                                            SendEmail.mailing(emailAddress, name, activationCode, "", "", "activate code");
                                             Partials.alert("You signed up successfully, for account activation\n" +
                                                                    "please check your email address for activation code.",
                                                          "notification");

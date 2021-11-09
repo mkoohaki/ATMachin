@@ -14,7 +14,7 @@
    <children>
       <Pane prefHeight="600.0" prefWidth="400.0" style="-fx-background-color: white;">
          <children>
-            <Button fx:id="getInfo" defaultButton="true" layoutX="140.0" layoutY="240.0" mnemonicParsing="false" onAction="#retrieving" prefHeight="13.0" prefWidth="125.0" style="-fx-background-color: #3109aa;" text="Retrieving" textAlignment="CENTER" textFill="#fffcfc">
+            <Button defaultButton="true" layoutX="140.0" layoutY="240.0" mnemonicParsing="false" onAction="#retrieving" prefHeight="13.0" prefWidth="125.0" style="-fx-background-color: #3109aa;" text="Retrieving" textAlignment="CENTER" textFill="#fffcfc">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
@@ -40,6 +40,11 @@
                </font>
             </Text>
             <Button layoutX="170.0" layoutY="550.0" mnemonicParsing="false" onAction="#back" prefWidth="61.0" style="-fx-background-color: DEEPPINK;" text="Back" textAlignment="CENTER">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+            <Button fx:id="resendButton" defaultButton="true" layoutX="265.0" layoutY="245.0" mnemonicParsing="false" onAction="#resend" prefHeight="30.0" prefWidth="71.0" style="-fx-background-color: LIGHTGREEN;" text="Resend" textAlignment="CENTER" textFill="#010101" visible="false">
                <font>
                   <Font size="14.0" />
                </font>

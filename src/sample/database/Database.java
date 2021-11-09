@@ -33,8 +33,6 @@ public abstract class Database {
     public abstract void updateRow(String pkId, String...columns) throws SQLException;
     public abstract boolean deleteRow(String pkId) throws SQLException;
     public abstract void insertRow(String...columns) throws SQLException;
-//    public abstract int insertRow(byte[] salt, String...columns) throws SQLException;
-//    public abstract int signup(String...columns) throws SQLException;
     public abstract void updatePassword(String pkId, String...columns) throws SQLException;
     public abstract ObservableList activity(String accountNumber, String account) throws SQLException;
     public abstract void insertActivityRow(String...columns) throws SQLException;

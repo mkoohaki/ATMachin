@@ -10,6 +10,7 @@ import sample.database.AccountDatabase;
 
 import java.sql.SQLException;
 import java.util.Objects;
+import java.util.Random;
 
 public class Partials {
 
@@ -82,5 +83,12 @@ public class Partials {
         AccountDatabase db = new AccountDatabase();
         String[] accountInfo = db.login(accountNumber);
         return accountInfo[0] != null;
+    }
+
+    public static String activationCode() {
+
+        Random rnd = new Random();
+        int randomNumber = rnd.nextInt(999999);
+        return String. format("%06d", randomNumber);
     }
 }

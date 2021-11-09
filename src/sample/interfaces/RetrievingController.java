@@ -5,13 +5,10 @@ import javafx.fxml.FXML;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
-import sample.database.AccountDatabase;
 import sample.Partials;
+import sample.database.AccountDatabase;
 import sample.partials.SendEmail;
-
 import javax.xml.bind.DatatypeConverter;
-import java.sql.SQLException;
-import java.util.Random;
 
 public class RetrievingController {
 
@@ -25,13 +22,12 @@ public class RetrievingController {
     Text textPass, textRepass, textCode;
 
     @FXML
-    javafx.scene.control.Button getInfo, submitInfo;
+    javafx.scene.control.Button submitInfo, resendButton;
 
-    private static final int ACCOUNT_DIGIT_NUMBER = 10;
     String accountNumber, emailAddress, pass, repass;
 
     @FXML
-    private void retrieving(ActionEvent event) throws SQLException {
+    private void retrieving(ActionEvent event) {
 
         accountNumber = accountNo.getText();
         emailAddress = email.getText();
@@ -39,7 +35,6 @@ public class RetrievingController {
         try {
             if(Partials.isValidNumber(accountNumber)) {
                 if(SignupController.isValidEmail(emailAddress)){
-
                     AccountDatabase db = new AccountDatabase();
                     String[] accountInfo = db.login(accountNumber);
 
@@ -47,12 +42,9 @@ public class RetrievingController {
                         if (accountInfo[4].equals(emailAddress)) {
                             if (accountInfo[11].equals("True")) {
 
-                                Random rnd = new Random();
-                                int randomNumber = rnd.nextInt(999999);
-                                String number = String.valueOf(randomNumber);
-
-                                SendEmail.mailing(emailAddress, accountInfo[3], number, "activate code");
-                                db.activationCodeUpdate(number, accountInfo[0]);
+                                String activationCode = Partials.activationCode();
+                                SendEmail.mailing(emailAddress, accountInfo[3], activationCode, "", "","activate code");
+                                db.activationCodeUpdate(activationCode, accountInfo[0]);
 
                                 Partials.alert("Check your email for activation code","notification");
 
@@ -63,6 +55,7 @@ public class RetrievingController {
                                 code.setVisible(true);
                                 textCode.setVisible(true);
                                 submitInfo.setVisible(true);
+                                resendButton.setVisible(true);
                             } else {
                                 Partials.alert("Account is not activated","error");
                             }
@@ -100,7 +93,7 @@ public class RetrievingController {
                     String hashedPass = DatatypeConverter.printHexBinary(sha2Hash);
 
                     db.updatePassword(accountNumber, salt, hashedPass);
-                    SendEmail.mailing(accountInfo[4], accountInfo[3], "", "password changed");
+                    SendEmail.mailing(accountInfo[4], accountInfo[3], "", "", "", "password changed");
                     Partials.alert("Password is changed successfully", "notification");
                     Partials.windowOpen("login", "Royal Canadian Bank", 600, 400);
                     Partials.windowClose(event);
@@ -113,6 +106,18 @@ public class RetrievingController {
         } else {
             Partials.alert("Activation code is wrong", "error");
         }
+    }
+
+    @FXML
+    private void resend(ActionEvent event) throws Exception {
+        AccountDatabase db = new AccountDatabase();
+        String[] accountInfo = db.login(accountNumber);
+
+        String activationCode = Partials.activationCode();
+        SendEmail.mailing(emailAddress, accountInfo[3], activationCode, "", "","activate code");
+        db.activationCodeUpdate(activationCode, accountInfo[0]);
+
+        Partials.alert("Check your email for activation code","notification");
     }
 
     @FXML
