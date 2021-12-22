@@ -88,7 +88,7 @@ public class Partials {
     public static String activationCode() {
 
         SecureRandom rnd = new SecureRandom();
-        int randomNumber = rnd.nextInt(999999);
+        int randomNumber = rnd.nextInt(1000000);
         return String. format("%06d", randomNumber);
     }
 }
