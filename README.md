@@ -1,4 +1,4 @@
-# ATMachin
+# ATMachine
 
 This is a JavaFx application.<br>
 • It works like an ATM machine/Bank account application.<br>
